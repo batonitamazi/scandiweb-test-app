@@ -8,8 +8,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainPage from './pages/MainPage';
 
 class App extends Component {
-  state = { categories: [], currencies: [], };
+  state = { categories: [], currencies: [], active: 0, };
 
+  
   componentDidMount() {
     this.fetchQuery();
     this.fetchCurrencies();
@@ -31,14 +32,16 @@ class App extends Component {
       currencies: [...result.data.currencies]
     })
   }
+  handleActiveChange = (e) => {
+    this.setState({active: Number(e.target.id)})
+  }
 
   render() {
-  console.log(this.state.categories)
 
     return (
       <div className='App'>
         <Router>
-          <Navbar categories={this.state.categories} currencies={this.state.currencies}/>
+          <Navbar categories={this.state.categories} currencies={this.state.currencies} active={this.state.active} activeChange={this.handleActiveChange}/>
           <Routes>
             <Route path='/' element={ <MainPage />}/>
           </Routes>
