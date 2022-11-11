@@ -29,7 +29,7 @@ export default class ProductPage extends Component {
     }
   }
   render() {
-    console.log(this.state.product)
+    console.log(this.props)
     return (
       <div className='product--container'>
         <div className='images--container'>

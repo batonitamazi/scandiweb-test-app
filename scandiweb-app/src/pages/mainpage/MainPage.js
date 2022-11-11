@@ -17,7 +17,7 @@ class MainPage extends Component {
         const result = await client.query({
             query: GET_PRODUCTS,
             variables: {
-                category: `${window.location.pathname.slice(1, 10)}`,
+                category: `${this.props.location.pathname.slice(1, 10)}`,
             },
         });
 
@@ -28,13 +28,14 @@ class MainPage extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div className='items--container'>
                 <h1 className='category--heading'>Category name</h1>
                 <div className='category--items'>
                     {this.state.products?.map((item, index) => {
                         return (
-                            <Link to={`/pdb/${item.id}`} key={index}>
+                            <Link to={`/${item.id}`} key={index}>
                                 <div className='product--card'>
                                     <img src={item.gallery[0]} alt="product" className="product--image" />
                                     <img src='./assets/addtocart.png' className='addto--cart' alt='cart' />

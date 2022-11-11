@@ -46,13 +46,17 @@ class App extends Component {
         <Router>
           <Navbar categories={this.state.categories} currencies={this.state.currencies} active={this.state.active} activeChange={this.handleActiveChange} />
           <Switch>
-          <Route path='/' exact component={MainPage}/>
-          <Route path='/pdb/:id' exact component={ProductPage}/>
-          {this.state.categories?.map((item, index) => {
-            return (
-                <Route key={index} path={`/${item.name}`} component={MainPage} exact/>
-            )
-          })}
+            <Route path='/' exact component={MainPage} />
+            {this.state.categories?.map((item, index) => {
+              return (
+                <Route key={index} path={`/${item.name}`} component={MainPage} exact />
+              )
+            })}
+            {this.state.categories?.map((item, index) => {
+              return (
+                <Route key={index} path={ `/:id`} component={ProductPage} exact />
+              )
+            })}
           </Switch>
         </Router>
       </div>

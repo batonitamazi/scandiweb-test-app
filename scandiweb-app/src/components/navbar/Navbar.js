@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import './navbar.css'
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 class Navbar extends Component {
   render() {
@@ -23,7 +23,9 @@ class Navbar extends Component {
             )
           })}
         </ul>
-        <img src='./assets/logo.png' alt='logo' className='navbar--logo' />
+        <Link to="/">
+          <img src='./assets/logo.png' alt='logo' className='navbar--logo' />
+        </Link>
         <div className='nav--actions'>
           <div className='currencie-picker'>
             <span className='currency--tag'>{this.props.currencies[0]?.symbol}</span>
