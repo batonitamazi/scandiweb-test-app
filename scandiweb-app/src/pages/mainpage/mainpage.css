@@ -16,7 +16,8 @@
     width: 100%;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 10%;
 }
 .product--card {
     position: relative;

@@ -5,11 +5,11 @@
   font-family: 'Raleway';
 }
 .App {
-  height: 1513px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 8%;
+  gap: 10%;
 }
 
