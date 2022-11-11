@@ -1,25 +1,25 @@
 
 import React, { Component } from 'react'
 import './navbar.css'
+import {Link} from "react-router-dom"
 
-export default class Navbar extends Component {
-
+class Navbar extends Component {
   render() {
     return (
       <div className='nav'>
         <ul className='nav--list'>
           {this.props.categories?.map((item, index) => {
-            console.log(index, this.props?.active);
             return (
-              <button
-                key={index}
-                id={index}
-                className="nav--item"
-                style={Number(this.props?.active) === index ? { borderBottom: `2px solid #5ECE7B` } : null}
-                onClick={this.props.activeChange}
-              >
-                {item.name}
-              </button>
+              <Link to={`/${item.name}`} key={index}>
+                <button
+                  id={index}
+                  className="nav--item"
+                  style={Number(this.props?.active) === index ? { borderBottom: `2px solid #5ECE7B` } : null}
+                  onClick={(e) => (this.props.activeChange(e))}
+                >
+                  {item.name}
+                </button>
+              </Link>
             )
           })}
         </ul>
@@ -35,3 +35,4 @@ export default class Navbar extends Component {
     )
   }
 }
+export default (Navbar)
