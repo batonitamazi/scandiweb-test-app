@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import './navbar.css'
 import { Link } from "react-router-dom"
+import { connect } from 'react-redux'
 
 class Navbar extends Component {
   render() {
@@ -34,9 +35,16 @@ class Navbar extends Component {
           <Link to="/cart">
             <img src='./assets/Emptycart.png' className='empty--cart' alt='empty cart' />
           </Link>
+          <div className='quantity--container'>
+            <span>{this.props.items.cartItems.length}</span>
+          </div>
         </div>
       </div>
     )
   }
 }
-export default (Navbar)
+const mapStateToProps = (state) => ({
+  items: state.cartItems
+});
+
+export default connect(mapStateToProps)(Navbar);

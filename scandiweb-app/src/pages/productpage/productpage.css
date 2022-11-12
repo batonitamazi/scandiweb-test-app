@@ -13,8 +13,8 @@
 }
 .mini--image {
     cursor: pointer;
-    max-width: 99px;
-    max-height: 100px;
+    width: 99px;
+    height: 100px;
 }
 .description--container {
     display: flex;
@@ -22,8 +22,8 @@
     gap: 15%;
 }
 .main--image {
-    max-width: 610px;
-    max-height: 511px;
+    width: 610px;
+    height: 511px;
 }
 .product--info--card {
     display: flex;
@@ -40,6 +40,7 @@
     font-weight: 300;
 }
 .choice--container {
+    height: 20%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -75,6 +76,7 @@
 }
 .cart--add {
     height: 52px;
+    width: 292px;
     background-color: #5ECE7B;
     color: #FFFFFF;
     text-transform: uppercase;

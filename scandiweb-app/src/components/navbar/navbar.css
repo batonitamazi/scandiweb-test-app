@@ -64,3 +64,24 @@
     font-family: 'Raleway';
     font-weight: 400;
 }
+.empty--cart {
+    position: relative;
+}
+.quantity--container{
+    position: absolute;
+    top: 2.4%;
+    right: 4.6%;
+    border-radius: 100%;
+    background-color: #2B2B2B;
+    width: 15px;
+    height: 15px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.quantity--container > span{
+    font-size: 14px;
+    font-weight: 700;
+}

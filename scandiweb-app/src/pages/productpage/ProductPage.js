@@ -26,7 +26,7 @@ export default class ProductPage extends Component {
     }
   }
   render() {
-    console.log(this.props)
+    console.log(this.state.product)
     return (
       <div className='product--container'>
         <div className='images--container'>
@@ -42,35 +42,28 @@ export default class ProductPage extends Component {
           <div className='product--info--card'>
             <h1 className='product--title'>{this.state.product?.name}</h1>
             <h1 className='product--subtitle'>{this.state.product?.description}</h1>
-            <div className='choice--container'>
-              <h4 className='container--subtitle'>size:</h4>
-              <div className='choices--container'>
-                {this.state.product.attributes ? this.state.product?.attributes[0]?.items?.map((item) => {
-                  return (
-                    <button key={item.id} className="choice--btn">
-                      {item.value}
-                    </button>
-                  )
-                }) : null}
-              </div>
-            </div>
-            <div className='choice--container'>
-              <h4 className='container--subtitle'>Color:</h4>
-              <div className='choices--container'>
-                {this.state.product?.attributes ? this.state.product?.attributes[1]?.items?.map((item) => {
-                  return (
-                    <button key={item.id} className="choice--btn" style={{backgroundColor: `${item.value}`, border: 'none'}}>
-                    </button>
-                  )
-                }) : null}
-              </div>
-            </div>
+            {this.state.product.attributes && this.state.product.attributes.map((item, index) => {
+              return (
+                <div className='choice--container' key={index}>
+                  <h4 className='container--subtitle'>{item.name}:</h4>
+                  <div className='choices--container'>
+                    {item.items.map((miniItem, index) => {
+                      return (
+                        <button key={index} className="choice--btn" style={{backgroundColor: `${miniItem.value}`, border: `1px solid ${miniItem.value}`, color: `${miniItem.value}`}}>
+                          {miniItem.id}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+              )
+            })}
             <div className='choice--container'>
               <h4 className='container--subtitle'>Price:</h4>
               <h1 className='product--price'>50{this.state.product?.prices ? this.state.product?.prices[0].currency.symbol : null}</h1>
             </div>
             <button className='cart--add'>
-                Add to cart
+              Add to cart
             </button>
           </div>
         </div>
