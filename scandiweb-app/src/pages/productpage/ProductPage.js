@@ -6,14 +6,11 @@ import './productpage.css'
 
 
 export default class ProductPage extends Component {
-
   state = { product: [], currentImage: "", }
   componentDidMount() {
     this.fetchProduct();
   }
-
   async fetchProduct() {
-
     try {
       const result = await client.query({
         query: GET_PRODUCT,

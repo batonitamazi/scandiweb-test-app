@@ -7,6 +7,7 @@ import Navbar from './components/navbar/Navbar';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MainPage from './pages/mainpage/MainPage';
 import ProductPage from './pages/productpage/ProductPage';
+import CartPage from './pages/cart/CartPage';
 
 class App extends Component {
   state = { categories: [], currencies: [], products: [], active: 0 };
@@ -47,6 +48,7 @@ class App extends Component {
           <Navbar categories={this.state.categories} currencies={this.state.currencies} active={this.state.active} activeChange={this.handleActiveChange} />
           <Switch>
             <Route path='/' exact component={MainPage} />
+            <Route path='/cart' exact component={CartPage}/>
             {this.state.categories?.map((item, index) => {
               return (
                 <Route key={index} path={`/${item.name}`} component={MainPage} exact />

@@ -31,7 +31,9 @@ class Navbar extends Component {
             <span className='currency--tag'>{this.props.currencies[0]?.symbol}</span>
             <img className='dropdown--icon' alt='dropdown' src='./assets/dropdown.png' />
           </div>
-          <img src='./assets/Emptycart.png' className='empty--cart' alt='empty cart' />
+          <Link to="/cart">
+            <img src='./assets/Emptycart.png' className='empty--cart' alt='empty cart' />
+          </Link>
         </div>
       </div>
     )
