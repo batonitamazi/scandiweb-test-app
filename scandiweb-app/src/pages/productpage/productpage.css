@@ -26,9 +26,11 @@
     height: 511px;
 }
 .product--info--card {
+    height: 73.5%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 13%;
 }
 .product--title  {
     font-size: 30px;
@@ -40,12 +42,11 @@
     font-weight: 300;
 }
 .choice--container {
-    height: 20%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 5%;
+    gap: 15%;
 }
 .container--subtitle {
     font-size: 18px;

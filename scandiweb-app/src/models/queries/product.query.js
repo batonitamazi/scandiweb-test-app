@@ -12,6 +12,7 @@ export const GET_PRODUCT = gql`
                 currency {
                     symbol
                 }
+                amount
             }
             gallery
             description

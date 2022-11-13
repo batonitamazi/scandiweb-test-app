@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import './cartpage.css'
+import {incrementQuantity, decrementQuantity} from '../../models/application/cartSlice'
 
 class CartPage extends Component {
   render() {
-    console.log(this.props.items)
     return (
       <div className='items--container'>
         <h1 className='cart--heading'>
@@ -17,7 +17,7 @@ class CartPage extends Component {
                 <h1 className='product--title'>{item.brand}</h1>
                 <h1 className='product--subtitle'>{item.name}</h1>
                 <h1 className='product--price'>
-                  {item.prices[0].amount} {item.prices[0].currency.symbol}
+                  {item.prices[0].amount * item.quantity} {item.prices[0].currency.symbol}
                 </h1>
                 {item.attributes.map((item, index) => {
                   return (
@@ -38,9 +38,9 @@ class CartPage extends Component {
               </div>
               <div className='cart--item--gallery'>
                 <div className='cart--quantity--actions'>
-                  <button className='quantity--btn'>+</button>
-                  <span>{item.quantity}</span>
-                  <button className='quantity--btn'>-</button>
+                  <button className='quantity--btn' onClick={() => this.props.incrementQuantity(item)}>+</button>
+                  <span className='cart--item--quantity'>{item.quantity}</span>
+                  <button className='quantity--btn' onClick={() => this.props.decrementQuantity(item)}>-</button>
                 </div>
                 <img className='cart--item--image' src={item.gallery[0]} alt="product in cart"/>
               </div>
@@ -58,5 +58,6 @@ class CartPage extends Component {
 const mapStateToProps = (state) => ({
   items: state.cartItems.cartItems
 });
+const mapDispatchToProps = {incrementQuantity, decrementQuantity};
 
-export default connect(mapStateToProps)(CartPage)
+export default connect(mapStateToProps, mapDispatchToProps)(CartPage)

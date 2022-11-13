@@ -35,9 +35,14 @@ class Navbar extends Component {
           <Link to="/cart">
             <img src='./assets/Emptycart.png' className='empty--cart' alt='empty cart' />
           </Link>
-          <div className='quantity--container'>
-            <span>{this.props.items.cartItems.length}</span>
-          </div>
+          {
+            this.props.items.cartItems.length > 0 && (
+              <div className='quantity--container'>
+                <span>{this.props.items.cartItems.length}</span>
+              </div>
+            )
+          }
+
         </div>
       </div>
     )

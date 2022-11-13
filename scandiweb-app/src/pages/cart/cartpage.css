@@ -3,6 +3,7 @@
     font-weight: 700;
 }
 .cart--item {
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -11,6 +12,7 @@
 .cart--item--description {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 .cart--item--image {
     width: 200px;
@@ -41,4 +43,9 @@
     font-size: 50px;
     font-weight: 300;
     cursor: pointer;
+}
+.cart--item--quantity {
+    font-size: 24px;
+    font-weight: 500;
+    
 }

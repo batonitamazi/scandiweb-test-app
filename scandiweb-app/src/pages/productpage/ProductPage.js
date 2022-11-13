@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { GET_PRODUCT } from '../../models/queries/product.query'
 import client from '../../models'
+import { connect } from 'react-redux'
+import { addtoCart } from '../../models/application/cartSlice'
 import './productpage.css'
 
 
 
-export default class ProductPage extends Component {
+class ProductPage extends Component {
   state = { product: [], currentImage: "", }
   componentDidMount() {
     this.fetchProduct();
@@ -40,8 +42,10 @@ export default class ProductPage extends Component {
         <div className='description--container'>
           <img className='main--image' src={this.state.image} alt="product" />
           <div className='product--info--card'>
-            <h1 className='product--title'>{this.state.product?.name}</h1>
-            <h1 className='product--subtitle'>{this.state.product?.description}</h1>
+            <div>
+              <h1 className='product--title'>{this.state.product?.brand}</h1>
+              <h1 className='product--subtitle'>{this.state.product?.name}</h1>
+            </div>
             {this.state.product.attributes && this.state.product.attributes.map((item, index) => {
               return (
                 <div className='choice--container' key={index}>
@@ -49,8 +53,8 @@ export default class ProductPage extends Component {
                   <div className='choices--container'>
                     {item.items.map((miniItem, index) => {
                       return (
-                        <button key={index} className="choice--btn" style={{backgroundColor: `${miniItem.value}`, border: `1px solid ${miniItem.value}`, color: `${miniItem.value}`}}>
-                          {miniItem.id}
+                        <button key={index} className="choice--btn" style={{ backgroundColor: `${miniItem.value}`, border: `1px solid ${miniItem.value}`, color: `${miniItem.value}` }}>
+                          {miniItem.value}
                         </button>
                       )
                     })}
@@ -60,14 +64,22 @@ export default class ProductPage extends Component {
             })}
             <div className='choice--container'>
               <h4 className='container--subtitle'>Price:</h4>
-              <h1 className='product--price'>50{this.state.product?.prices ? this.state.product?.prices[0].currency.symbol : null}</h1>
+              <h1 className='product--price'>{this.state.product?.prices ? this.state.product?.prices[0].amount : null}{this.state.product?.prices ? this.state.product?.prices[0].currency.symbol : null}</h1>
             </div>
-            <button className='cart--add'>
+            <button className='cart--add' onClick={() => this.props.addtoCart(this.state.product)}>
               Add to cart
             </button>
+            <p>
+              {this.state.product?.description}
+            </p>
           </div>
         </div>
       </div>
     )
   }
 }
+const mapStateToProps = (state) => ({
+  items: state.cartItems.cartItems
+});
+const mapDispatchToProps = { addtoCart };
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);
