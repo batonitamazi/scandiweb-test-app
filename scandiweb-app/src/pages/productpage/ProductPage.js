@@ -8,7 +8,10 @@ import './productpage.css'
 
 
 class ProductPage extends Component {
-  state = { product: [], currentImage: "", }
+  constructor() {
+    super()
+    this.state = { product: [], currentImage: "", }
+  }
   componentDidMount() {
     this.fetchProduct();
   }
@@ -28,7 +31,6 @@ class ProductPage extends Component {
     }
   }
   render() {
-    console.log(this.state.product)
     return (
       <div className='product--container'>
         <div className='images--container'>

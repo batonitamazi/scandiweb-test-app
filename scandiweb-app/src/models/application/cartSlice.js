@@ -32,13 +32,6 @@ const cartSlice = createSlice({
             }
             item.quantity--;
         },
-        // removefromCart: (state, action) => {
-        //     const item = state.cartItems.find((item) => item.id === action.payload.id)
-        //     if (item.quantity <= 0) {
-        //         const secondItem = state.cartItems.filter((item) => item.id !== item)
-        //         state.cartItems = secondItem;
-        //     }
-        // }
     }
 })
 

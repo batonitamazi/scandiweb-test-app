@@ -1,0 +1,22 @@
+
+.currencies--card {
+    width: 114px;
+    position: absolute;
+    top: 7%;
+    right: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #1D1F22;
+}
+.currencies--card--hide {
+    display: none;
+}
+.currency--picker {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 18px;
+    font-weight: 500;
+}

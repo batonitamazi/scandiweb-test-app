@@ -8,7 +8,10 @@ import { addtoCart } from '../../models/application/cartSlice'
 
 
 class MainPage extends Component {
-    state = { products: [], }
+    constructor() {
+        super() 
+        this.state = { products: [], }
+    }
 
     componentDidMount() {
         this.fetchProducts();

@@ -3,8 +3,17 @@ import React, { Component } from 'react'
 import './navbar.css'
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
+import CurrenciesCard from '../currencyModal/CurrenciesCard'
 
 class Navbar extends Component {
+  constructor() {
+    super();
+    this.state = { show: false }
+  }
+  handleModal = () => {
+    this.setState({show: !this.state.show})
+  }
+
   render() {
     return (
       <div className='nav'>
@@ -30,7 +39,8 @@ class Navbar extends Component {
         <div className='nav--actions'>
           <div className='currencie-picker'>
             <span className='currency--tag'>{this.props.currencies[0]?.symbol}</span>
-            <img className='dropdown--icon' alt='dropdown' src='./assets/dropdown.png' />
+            <CurrenciesCard currencies={this.props.currencies} show={this.state.show}/>
+            <img className='dropdown--icon' alt='dropdown' src='./assets/dropdown.png' onClick={this.handleModal}/>
           </div>
           <Link to="/cart">
             <img src='./assets/Emptycart.png' className='empty--cart' alt='empty cart' />
@@ -42,7 +52,6 @@ class Navbar extends Component {
               </div>
             )
           }
-
         </div>
       </div>
     )

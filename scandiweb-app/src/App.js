@@ -8,15 +8,20 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MainPage from './pages/mainpage/MainPage';
 import ProductPage from './pages/productpage/ProductPage';
 import CartPage from './pages/cart/CartPage';
+import { connect } from 'react-redux'
+import { addCurrencies } from './models/application/currencySlice'
+
 
 class App extends Component {
-  state = { categories: [], currencies: [], products: [], active: 0 };
+  constructor() {
+    super();
+    this.state = { categories: [], currencies: [], products: [], active: 0 };
+  }
 
 
   componentDidMount() {
     this.fetchQuery();
     this.fetchCurrencies();
-    // this.fetchProducts();
   }
 
   async fetchQuery() {
@@ -30,25 +35,24 @@ class App extends Component {
   async fetchCurrencies() {
     const result = await client.query({
       query: GET_CURRENCIES,
-      variables: {
-
-      }
     })
     this.setState({
       currencies: [...result.data.currencies]
     })
+    this.props.addCurrencies([...result.data.currencies])
   }
   handleActiveChange = (e) => {
     this.setState({ active: Number(e.target.id) })
   }
   render() {
+
     return (
       <div className='App'>
         <Router>
           <Navbar categories={this.state.categories} currencies={this.state.currencies} active={this.state.active} activeChange={this.handleActiveChange} />
           <Switch>
             <Route path='/' exact component={MainPage} />
-            <Route path='/cart' exact component={CartPage}/>
+            <Route path='/cart' exact component={CartPage} />
             {this.state.categories?.map((item, index) => {
               return (
                 <Route key={index} path={`/${item.name}`} component={MainPage} exact />
@@ -56,7 +60,7 @@ class App extends Component {
             })}
             {this.state.categories?.map((item, index) => {
               return (
-                <Route key={index} path={ `/:id`} component={ProductPage} exact />
+                <Route key={index} path={`/:id`} component={ProductPage} exact />
               )
             })}
           </Switch>
@@ -66,4 +70,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = { addCurrencies }
+const mapStateToProps = (state) => ({
+  items: state.currencies.currencies
+});
+export default connect(mapStateToProps, mapDispatchToProps)(App);
