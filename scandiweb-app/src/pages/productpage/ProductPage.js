@@ -66,7 +66,14 @@ class ProductPage extends Component {
             })}
             <div className='choice--container'>
               <h4 className='container--subtitle'>Price:</h4>
-              <h1 className='product--price'>{this.state.product?.prices ? this.state.product?.prices[0].amount : null}{this.state.product?.prices ? this.state.product?.prices[0].currency.symbol : null}</h1>
+              <h1 className='product--price'>
+                {this.state.product?.prices ?
+                  this.state.product?.prices[this.state.product?.prices.findIndex((element) => element.currency.label === this.props.currencies[1]?.label)].amount
+                  : null}
+                {this.state.product?.prices ?
+                  this.state.product?.prices[this.state.product?.prices.findIndex((element) => element.currency.label === this.props.currencies[1]?.label)].currency.symbol
+                  : null}
+              </h1>
             </div>
             <button className='cart--add' onClick={() => this.props.addtoCart(this.state.product)}>
               Add to cart
@@ -81,7 +88,9 @@ class ProductPage extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  items: state.cartItems.cartItems
+  items: state.cartItems.cartItems,
+  currencies: state.currencies.activeCurrency
+
 });
 const mapDispatchToProps = { addtoCart };
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

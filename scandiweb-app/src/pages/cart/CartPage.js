@@ -17,7 +17,8 @@ class CartPage extends Component {
                 <h1 className='product--title'>{item.brand}</h1>
                 <h1 className='product--subtitle'>{item.name}</h1>
                 <h1 className='product--price'>
-                  {item.prices[0].amount * item.quantity} {item.prices[0].currency.symbol}
+                  {item.prices[item.prices.findIndex((element) => element.currency.label === this.props.currencies[1].label)].amount * item.quantity} 
+                  {item.prices[item.prices.findIndex((element) => element.currency.label === this.props.currencies[1].label)].currency.symbol}
                 </h1>
                 {item.attributes.map((item, index) => {
                   return (
@@ -56,7 +57,9 @@ class CartPage extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  items: state.cartItems.cartItems
+  items: state.cartItems.cartItems,
+  currencies: state.currencies.activeCurrency
+
 });
 const mapDispatchToProps = {incrementQuantity, decrementQuantity};
 

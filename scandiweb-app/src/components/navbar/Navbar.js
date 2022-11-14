@@ -37,10 +37,12 @@ class Navbar extends Component {
           <img src='./assets/logo.png' alt='logo' className='navbar--logo' />
         </Link>
         <div className='nav--actions'>
-          <div className='currencie-picker'>
-            <span className='currency--tag'>{this.props.currencies[0]?.symbol}</span>
-            <CurrenciesCard currencies={this.props.currencies} show={this.state.show}/>
-            <img className='dropdown--icon' alt='dropdown' src='./assets/dropdown.png' onClick={this.handleModal}/>
+          <div className='currencie-picker' onClick={this.handleModal}>
+            {this.props.currencies?.activeCurrency[1]?.symbol && (
+            <span className='currency--tag'>{this.props.currencies.activeCurrency[1].symbol}</span>
+            )}
+            <CurrenciesCard show={this.state.show}/>
+            <img className='dropdown--icon' alt='dropdown' src='./assets/dropdown.png' />
           </div>
           <Link to="/cart">
             <img src='./assets/Emptycart.png' className='empty--cart' alt='empty cart' />
@@ -58,7 +60,8 @@ class Navbar extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  items: state.cartItems
+  items: state.cartItems,
+  currencies: state.currencies
 });
 
 export default connect(mapStateToProps)(Navbar);

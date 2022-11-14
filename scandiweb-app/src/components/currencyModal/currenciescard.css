@@ -20,3 +20,12 @@
     font-size: 18px;
     font-weight: 500;
 }
+.currency--picker--active {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #EEEEEE;
+}

@@ -9,7 +9,7 @@ import { addtoCart } from '../../models/application/cartSlice'
 
 class MainPage extends Component {
     constructor() {
-        super() 
+        super()
         this.state = { products: [], }
     }
 
@@ -44,7 +44,13 @@ class MainPage extends Component {
                                 <div className='card--subcontainer'>
                                     <Link to={`/${item.id}`}>
                                         <span className='item--span'>{item.name}</span>
-                                        <h4 className='item--price'>{item.prices[0].amount} {item.prices[0].currency.symbol}</h4>
+                                        {this.props.currencies[1] && (
+                                            <h4 className='item--price'>
+                                                {item.prices[item.prices.findIndex((element) => element.currency.label === this.props?.currencies[1]?.label)].amount}
+                                                {item.prices[item.prices.findIndex((element) => element.currency.label === this.props?.currencies[1]?.label)].currency.symbol}
+                                            </h4>
+                                        )}
+
                                     </Link>
                                 </div>
                             </div>
@@ -56,7 +62,8 @@ class MainPage extends Component {
     }
 }
 const mapStateToProps = (state) => ({
-    items: state.cartItems.cartItems
+    items: state.cartItems.cartItems,
+    currencies: state.currencies.activeCurrency
 });
 const mapDispatchToProps = { addtoCart };
 

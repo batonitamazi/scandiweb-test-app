@@ -49,7 +49,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Router>
-          <Navbar categories={this.state.categories} currencies={this.state.currencies} active={this.state.active} activeChange={this.handleActiveChange} />
+          <Navbar categories={this.state.categories} active={this.state.active} activeChange={this.handleActiveChange} />
           <Switch>
             <Route path='/' exact component={MainPage} />
             <Route path='/cart' exact component={CartPage} />

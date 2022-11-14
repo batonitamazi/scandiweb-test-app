@@ -11,6 +11,7 @@ export const GET_PRODUCTS = gql`
                 inStock
                 prices {
                     currency {
+                        label
                         symbol
                     }
                     amount

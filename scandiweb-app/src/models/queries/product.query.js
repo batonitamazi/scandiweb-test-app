@@ -10,6 +10,7 @@ export const GET_PRODUCT = gql`
             category
             prices {
                 currency {
+                    label
                     symbol
                 }
                 amount
