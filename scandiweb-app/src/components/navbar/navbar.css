@@ -65,12 +65,13 @@
     font-weight: 400;
 }
 .empty--cart {
+    cursor: pointer;
     position: relative;
 }
 .quantity--container{
     position: absolute;
     top: 2.4%;
-    right: 4.6%;
+    right: 5.75%;
     border-radius: 100%;
     background-color: #2B2B2B;
     width: 15px;

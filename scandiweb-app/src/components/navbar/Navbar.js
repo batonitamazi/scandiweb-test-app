@@ -4,14 +4,18 @@ import './navbar.css'
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
 import CurrenciesCard from '../currencyModal/CurrenciesCard'
+import CartModal from '../cart/CartModal'
 
 class Navbar extends Component {
   constructor() {
     super();
-    this.state = { show: false }
+    this.state = { show: false, showCartModal: false }
   }
   handleModal = () => {
     this.setState({show: !this.state.show})
+  }
+  handleCartModal = () => {
+    this.setState({showCartModal: !this.state.showCartModal})
   }
 
   render() {
@@ -44,9 +48,7 @@ class Navbar extends Component {
             <CurrenciesCard show={this.state.show}/>
             <img className='dropdown--icon' alt='dropdown' src='./assets/dropdown.png' />
           </div>
-          <Link to="/cart">
-            <img src='./assets/Emptycart.png' className='empty--cart' alt='empty cart' />
-          </Link>
+            <img src='./assets/Emptycart.png' className='empty--cart' alt='empty cart' onClick={this.handleCartModal}/>
           {
             this.props.items.cartItems.length > 0 && (
               <div className='quantity--container'>
@@ -54,6 +56,7 @@ class Navbar extends Component {
               </div>
             )
           }
+          <CartModal show={this.state.showCartModal}/>
         </div>
       </div>
     )
