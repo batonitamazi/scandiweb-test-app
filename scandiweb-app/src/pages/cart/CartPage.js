@@ -59,7 +59,6 @@ class CartPage extends Component {
 const mapStateToProps = (state) => ({
   items: state.cartItems.cartItems,
   currencies: state.currencies.activeCurrency
-
 });
 const mapDispatchToProps = {incrementQuantity, decrementQuantity};
 

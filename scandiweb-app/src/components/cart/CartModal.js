@@ -49,6 +49,16 @@ class CartModal extends Component {
                             </div>)
                     })}
                 </div>
+                <div className='total--card'>
+                    <h1 className='cart--card--heading'>Total:</h1>
+                    <h1 className='cart--card--heading'>
+                        {this.props.items && this.props.items.reduce((acumulator, curValue) => {
+                            acumulator += Number(curValue.prices[curValue.prices.findIndex((element) => element.currency.label === this.props.currencies[1].label)].amount * curValue.quantity);
+                            return acumulator
+                        }, 0)}
+                        {this.props.items[0]?.prices[this.props.items[0]?.prices.findIndex((element) => element.currency.label === this.props.currencies[1].label)].currency.symbol}
+                    </h1>
+                </div>
                 <div className='cart--component--actions'>
                     <Link to='/cart'>
                         <button className='viewcart--btn'>

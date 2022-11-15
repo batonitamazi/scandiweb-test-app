@@ -20,6 +20,7 @@
     gap: 10%;
 }
 .product--card {
+    width: 30%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -36,7 +37,7 @@
 }
 .product--image {
     margin-top: 20px;
-    width: 354px;
+    width: 90%;
     height: 330px;
 }
 .card--subcontainer {

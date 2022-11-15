@@ -79,7 +79,7 @@ class ProductPage extends Component {
               Add to cart
             </button>
             <p>
-              {this.state.product?.description}
+              {this.state.product?.description?.slice(3,51)}
             </p>
           </div>
         </div>
