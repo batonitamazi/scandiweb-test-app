@@ -8,7 +8,12 @@ class CartModal extends Component {
     render() {
         return (
             <div className={this.props.show ? 'cart--card' : 'cart--card--hide'}>
-                <h1 className='cart--card--heading'>My Bag. <span className='cart--span'>{this.props.items.length} items</span></h1>
+                <h1 className='cart--card--heading'>My Bag. <span className='cart--span'>
+                    {this.props.items && this.props.items.reduce((acumulator, curValue) => {
+                        acumulator += Number(curValue.quantity)
+                        return acumulator
+                    }, 0)}
+                    items</span></h1>
                 <div className='card--products'>
                     {this.props.items && this.props.items.map((item) => {
                         return (
