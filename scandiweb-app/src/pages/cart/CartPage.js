@@ -63,7 +63,6 @@ class CartPage extends Component {
           </h1>
           <h1 className='payments--heading'>Quantity:
             {this.props.items && this.props.items.reduce((acumulator, curValue) => {
-              // console.log(curValue)
               acumulator+= Number(curValue.quantity)
               return acumulator
             }, 0)}

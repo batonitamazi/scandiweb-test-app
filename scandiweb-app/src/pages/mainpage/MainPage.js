@@ -38,32 +38,34 @@ class MainPage extends Component {
                 <div className='category--items'>
                     {this.state.products?.map((item, index) => {
                         return (
-                            <div className='product--card' key={index}>
-                                <img src={item.gallery[0]} alt="product" className="product--image" />
-                                <img src='./assets/addtocart.png' className='addto--cart' alt='cart' onClick={() => this.props.addtoCart(item)} />
-                                <div className='card--subcontainer'>
-                                    <Link to={`/${item.id}`}>
-                                        <span className='item--span'>{item.name}</span>
-                                        {this.props.currencies[1] && (
-                                            <h4 className='item--price'>
-                                                {item.prices[item.prices.findIndex((element) => element.currency.label === this.props?.currencies[1]?.label)].amount}
-                                                {item.prices[item.prices.findIndex((element) => element.currency.label === this.props?.currencies[1]?.label)].currency.symbol}
-                                            </h4>
-                                        )}
+                            <div className={this.props.backgroundBlur ? 'product--card--blurred' : 'product--card'} key = { index } >
+                                    <img src={item.gallery[0]} alt="product" className="product--image" />
+                                    <img src='./assets/addtocart.png' className='addto--cart' alt='cart' onClick={() => this.props.addtoCart(item)} />
+                                    <div className='card--subcontainer'>
+                                        <Link to={`/${item.id}`}>
+                                            <span className='item--span'>{item.name}</span>
+                                            {this.props.currencies[1] && (
+                                                <h4 className='item--price'>
+                                                    {item.prices[item.prices.findIndex((element) => element.currency.label === this.props?.currencies[1]?.label)].amount}
+                                                    {item.prices[item.prices.findIndex((element) => element.currency.label === this.props?.currencies[1]?.label)].currency.symbol}
+                                                </h4>
+                                            )}
 
-                                    </Link>
+                                        </Link>
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    })}
-                </div>
+                )
+                        })}
             </div>
+                </div >
         )
     }
 }
 const mapStateToProps = (state) => ({
     items: state.cartItems.cartItems,
-    currencies: state.currencies.activeCurrency
+    currencies: state.currencies.activeCurrency,
+    backgroundBlur: state.backgroundBlur.backgroundBlur,
+
 });
 const mapDispatchToProps = { addtoCart };
 

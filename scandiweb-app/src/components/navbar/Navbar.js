@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
 import CurrenciesCard from '../currencyModal/CurrenciesCard'
 import CartModal from '../cart/CartModal'
+import { addBackgroundBlur } from '../../models/application/modalSlice'
 
 class Navbar extends Component {
   constructor() {
@@ -12,10 +13,15 @@ class Navbar extends Component {
     this.state = { show: false, showCartModal: false }
   }
   handleModal = () => {
-    this.setState({show: !this.state.show})
+    this.setState({ showCartModal: false })
+    this.setState({ show: !this.state.show })
+    this.props.addBackgroundBlur(this.props.backgroundBlur)
   }
   handleCartModal = () => {
-    this.setState({showCartModal: !this.state.showCartModal})
+    this.setState({ showCartModal: !this.state.showCartModal })
+    this.props.addBackgroundBlur(this.props.backgroundBlur)
+    this.setState({ show: false })
+
   }
 
   render() {
@@ -43,20 +49,25 @@ class Navbar extends Component {
         <div className='nav--actions'>
           <div className='currencie-picker' onClick={this.handleModal}>
             {this.props.currencies?.activeCurrency[1]?.symbol && (
-            <span className='currency--tag'>{this.props.currencies.activeCurrency[1].symbol}</span>
+              <span className='currency--tag'>{this.props.currencies.activeCurrency[1].symbol}</span>
             )}
-            <CurrenciesCard show={this.state.show}/>
+            <CurrenciesCard show={this.state.show} />
             <img className='dropdown--icon' alt='dropdown' src='./assets/dropdown.png' />
           </div>
-            <img src='./assets/Emptycart.png' className='empty--cart' alt='empty cart' onClick={this.handleCartModal}/>
+          <img src='./assets/Emptycart.png' className='empty--cart' alt='empty cart' onClick={this.handleCartModal} />
           {
             this.props.items.cartItems.length > 0 && (
               <div className='quantity--container'>
-                <span>{this.props.items.cartItems.length}</span>
+                <span>
+                  {this.props.items.cartItems && this.props.items.cartItems.reduce((acumulator, curValue) => {
+                    acumulator += Number(curValue.quantity)
+                    return acumulator
+                  }, 0)}
+                </span>
               </div>
             )
           }
-          <CartModal show={this.state.showCartModal}/>
+          <CartModal show={this.state.showCartModal} />
         </div>
       </div>
     )
@@ -64,7 +75,9 @@ class Navbar extends Component {
 }
 const mapStateToProps = (state) => ({
   items: state.cartItems,
-  currencies: state.currencies
+  currencies: state.currencies,
+  backgroundBlur: state.backgroundBlur.backgroundBlur
 });
+const mapDispatchToProps = { addBackgroundBlur }
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
