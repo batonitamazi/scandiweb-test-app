@@ -38,26 +38,29 @@ class MainPage extends Component {
                 <div className='category--items'>
                     {this.state.products?.map((item, index) => {
                         return (
-                            <div className={this.props.backgroundBlur ? 'product--card--blurred' : 'product--card'} key = { index } >
-                                    <img src={item.gallery[0]} alt="product" className="product--image" />
-                                    <img src='./assets/addtocart.png' className='addto--cart' alt='cart' onClick={() => this.props.addtoCart(item)} />
-                                    <div className='card--subcontainer'>
-                                        <Link to={`/${item.id}`}>
-                                            <span className='item--span'>{item.name}</span>
-                                            {this.props.currencies[1] && (
-                                                <h4 className='item--price'>
-                                                    {item.prices[item.prices.findIndex((element) => element.currency.label === this.props?.currencies[1]?.label)].amount}
-                                                    {item.prices[item.prices.findIndex((element) => element.currency.label === this.props?.currencies[1]?.label)].currency.symbol}
-                                                </h4>
-                                            )}
-
-                                        </Link>
-                                    </div>
+                            <div className={this.props.backgroundBlur ? 'product--card--blurred' : 'product--card'} key={index} >
+                                <div className={item.inStock ?'in--stock' : 'out--stock'}>
+                                    Out of Stock
                                 </div>
-                )
-                        })}
-            </div>
-                </div >
+                                <img src={item.gallery[0]} alt="product" className="product--image" />
+                                <img src='./assets/addtocart.png' className={item.inStock ? 'addto--cart' : 'hidden--cart'} alt='cart' onClick={() => this.props.addtoCart(item)} />
+                                <div className='card--subcontainer'>
+                                    <Link to={`/${item.id}`}>
+                                        <span className='item--span'>{item.name}</span>
+                                        {this.props.currencies[1] && (
+                                            <h4 className='item--price'>
+                                                {item.prices[item.prices.findIndex((element) => element.currency.label === this.props?.currencies[1]?.label)].amount}
+                                                {item.prices[item.prices.findIndex((element) => element.currency.label === this.props?.currencies[1]?.label)].currency.symbol}
+                                            </h4>
+                                        )}
+
+                                    </Link>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div >
         )
     }
 }

@@ -10,6 +10,7 @@ import ProductPage from './pages/productpage/ProductPage';
 import CartPage from './pages/cart/CartPage';
 import { connect } from 'react-redux'
 import { addCurrencies } from './models/application/currencySlice'
+import {addBackgroundBlur} from './models/application/modalSlice'
 
 
 class App extends Component {
@@ -46,8 +47,7 @@ class App extends Component {
   }
   render() {
     return (
-
-      <div className={this.props.backgroundBlur ? 'App--blurred' : 'App'}>
+      <div className={this.props.backgroundBlur ? 'App--blurred' : 'App'}>    
         <Router>
           <Navbar categories={this.state.categories} active={this.state.active} activeChange={this.handleActiveChange} handleBackground={this.handleBackground}/>
           <Switch>
@@ -70,9 +70,11 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = { addCurrencies }
+const mapDispatchToProps = { addCurrencies, addBackgroundBlur }
 const mapStateToProps = (state) => ({
   items: state.currencies.currencies,
   backgroundBlur: state.backgroundBlur.backgroundBlur,
 });
+
+
 export default connect(mapStateToProps, mapDispatchToProps)(App);
