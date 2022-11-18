@@ -68,6 +68,9 @@
     font-family: 'Raleway';
     font-weight: 400;
 }
+.nav--item:hover {
+    border-bottom: 2px solid #5ECE7B;
+}
 .empty--cart {
     cursor: pointer;
     position: relative;

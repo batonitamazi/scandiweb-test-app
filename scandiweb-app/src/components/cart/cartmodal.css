@@ -1,5 +1,5 @@
 .cart--card {
-    height: 677px;  
+    max-height: 677px;  
     top: 8%;
     right: 3%;
     width: 325px;

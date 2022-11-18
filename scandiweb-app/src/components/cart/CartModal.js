@@ -66,12 +66,12 @@ class CartModal extends Component {
                 </div>
                 <div className='cart--component--actions'>
                     <Link to='/cart'>
-                        <button className='viewcart--btn'>
+                        <button className='viewcart--btn' onClick={this.props.handleCartModal}>
                             View Bag
                         </button>
                     </Link>
                     <Link to='/cart'>
-                        <button className='checkout--btn'>
+                        <button className='checkout--btn' onClick={this.props.handleCartModal}>
                             Check out
                         </button>
                     </Link>

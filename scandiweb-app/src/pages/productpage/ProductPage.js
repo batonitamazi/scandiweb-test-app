@@ -33,7 +33,7 @@ class ProductPage extends Component {
   render() {
     return (
       <div className='product--container'>
-        <div className='images--container'>
+        <div className={this.props.backgroundBlur ? 'images--container--blur' : 'images--container' }>
           {this.state.product?.gallery?.map((item, index) => {
             return (
               <img key={index} src={item} className="mini--image" alt='product' onClick={() => this.setState({ image: `${item}` })} />
@@ -41,7 +41,7 @@ class ProductPage extends Component {
           })}
 
         </div>
-        <div className='description--container'>
+        <div className={this.props.backgroundBlur ? 'description--container--blur' : 'description--container'} >
           <img className='main--image' src={this.state.image} alt="product" />
           <div className='product--info--card'>
             <div>
@@ -78,8 +78,9 @@ class ProductPage extends Component {
             <button className='cart--add' onClick={() => this.props.addtoCart(this.state.product)}>
               Add to cart
             </button>
-            <p>
-              {this.state.product?.description?.slice(3,51)}
+            <p dangerouslySetInnerHTML={{
+                __html: this.state.product?.description
+              }}>
             </p>
           </div>
         </div>
@@ -89,8 +90,8 @@ class ProductPage extends Component {
 }
 const mapStateToProps = (state) => ({
   items: state.cartItems.cartItems,
-  currencies: state.currencies.activeCurrency
-
+  currencies: state.currencies.activeCurrency,
+  backgroundBlur: state.backgroundBlur.backgroundBlur,
 });
 const mapDispatchToProps = { addtoCart };
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

@@ -31,3 +31,6 @@ button {
 .text--link &:focus, &:hover, &:visited, &:link, &:active {
     text-decoration: none;
 }
+.text--link {
+  text-decoration: none;
+}

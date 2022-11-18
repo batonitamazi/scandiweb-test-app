@@ -15,13 +15,12 @@ class Navbar extends Component {
   handleModal = () => {
     this.setState({ showCartModal: false })
     this.setState({ show: !this.state.show })
-    console.log(this.props.backgroundBlur)
-    this.props.addBackgroundBlur(this.props.backgroundBlur)
+    this.props.addBackgroundBlur(this.state.show)
   }
   handleCartModal = () => {
     this.setState({ showCartModal: !this.state.showCartModal })
-    this.props.addBackgroundBlur(this.props.backgroundBlur)
     this.setState({ show: false })
+    this.props.addBackgroundBlur(this.state.showCartModal)
   }
 
   render() {
@@ -67,7 +66,7 @@ class Navbar extends Component {
               </div>
             )
           }
-          <CartModal show={this.state.showCartModal} />
+          <CartModal show={this.state.showCartModal} handleCartModal={this.handleCartModal}/>
         </div>
       </div>
     )
