@@ -10,13 +10,13 @@ import ProductPage from './pages/productpage/ProductPage';
 import CartPage from './pages/cart/CartPage';
 import { connect } from 'react-redux'
 import { addCurrencies } from './models/application/currencySlice'
-import {addBackgroundBlur} from './models/application/modalSlice'
+import { addBackgroundBlur } from './models/application/modalSlice'
 
 
 class App extends Component {
   constructor() {
     super();
-    this.state = { categories: [], currencies: [], products: [], active: 0};
+    this.state = { categories: [], currencies: [], products: [], active: 0 };
   }
 
 
@@ -46,13 +46,14 @@ class App extends Component {
     this.setState({ active: Number(e.target.id) })
   }
   render() {
+    const {backgroundBlur} = this.props
     return (
-      <div className={this.props.backgroundBlur ? 'App--blurred' : 'App'}>    
+      <div className={backgroundBlur ? 'App--blurred' : 'App'}>
         <Router>
-          <Navbar categories={this.state.categories} active={this.state.active} activeChange={this.handleActiveChange} handleBackground={this.handleBackground}/>
+          <Navbar categories={this.state.categories} active={this.state.active} activeChange={this.handleActiveChange} handleBackground={this.handleBackground} />
           <Switch>
             <Route path='/' exact component={MainPage} />
-            <Route path='/cart' exact component={CartPage}/>
+            <Route path='/cart' exact component={CartPage} />
             {this.state.categories?.map((item, index) => {
               return (
                 <Route key={index} path={`/${item.name}`} component={MainPage} exact />

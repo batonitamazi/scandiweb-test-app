@@ -6,26 +6,33 @@ import './cartmodal.css'
 
 class CartModal extends Component {
     render() {
+        const { show,
+                items,
+                currencies,
+                incrementQuantity, 
+                decrementQuantity,
+                handleCartModal,
+        } = this.props
         return (
-            <div className={this.props.show ? 'cart--card' : 'cart--card--hide'}>
+            <div className={show ? 'cart--card' : 'cart--card--hide'}>
                 <h1 className='cart--card--heading'>My Bag. <span className='cart--span'>
-                    {this.props.items && this.props.items.reduce((acumulator, curValue) => {
+                    {items && items.reduce((acumulator, curValue) => {
                         acumulator += Number(curValue.quantity)
                         return acumulator
                     }, 0)}
                     items</span></h1>
                 <div className='card--products'>
-                    {this.props.items && this.props.items.map((item) => {
+                    {items && items.map((item) => {
                         return (
                             <div className='cart--product--card' key={item.id}>
                                 <div className='product--card--description'>
                                     <h2 className='card--product--heading'>{item.brand}</h2>
                                     <h2 className='card--product--heading'>{item.name}</h2>
                                     <h3 className='card--product--price'>
-                                        {item.prices[item.prices.findIndex((element) => element.currency.label === this.props.currencies[1].label)].amount * item.quantity}
-                                        {item.prices[item.prices.findIndex((element) => element.currency.label === this.props.currencies[1].label)].currency.symbol}
+                                        {(item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount * item.quantity).toFixed(2)}
+                                        {item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
                                     </h3>
-                                    {item.attributes.map((item, index) => {
+                                    {/* {item.attributes.map((item, index) => {
                                         return (
                                             <div className='choice--container' key={index}>
                                                 <h4 className='container--subtitle'>{item.name}:</h4>
@@ -40,13 +47,13 @@ class CartModal extends Component {
                                                 </div>
                                             </div>
                                         )
-                                    })}
+                                    })} */}
                                 </div>
                                 <div className='product--card--actions'>
                                     <div className='card--quantity--actions'>
-                                        <button className='cart--quantity--btn' onClick={() => this.props.incrementQuantity(item)}>+</button>
+                                        <button className='cart--quantity--btn' onClick={() => incrementQuantity(item)}>+</button>
                                         <span className='cart--item--quantity'>{item.quantity}</span>
-                                        <button className='cart--quantity--btn' onClick={() => this.props.decrementQuantity(item)}>-</button>
+                                        <button className='cart--quantity--btn' onClick={() => decrementQuantity(item)}>-</button>
                                     </div>
                                     <img className='card--item--image' src={item.gallery[0]} alt="product in cart" />
                                 </div>
@@ -57,21 +64,21 @@ class CartModal extends Component {
                 <div className='total--card'>
                     <h1 className='cart--card--heading'>Total:</h1>
                     <h1 className='cart--card--heading'>
-                        {this.props.items && this.props.items.reduce((acumulator, curValue) => {
-                            acumulator += Number(curValue.prices[curValue.prices.findIndex((element) => element.currency.label === this.props.currencies[1].label)].amount * curValue.quantity);
-                            return acumulator
+                        {items && items.reduce((acumulator, curValue) => {
+                            acumulator += Number(curValue.prices[curValue.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount * curValue.quantity);
+                            return acumulator.toFixed(2)
                         }, 0)}
-                        {this.props.items[0]?.prices[this.props.items[0]?.prices.findIndex((element) => element.currency.label === this.props.currencies[1].label)].currency.symbol}
+                        {items[0]?.prices[items[0]?.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
                     </h1>
                 </div>
                 <div className='cart--component--actions'>
                     <Link to='/cart'>
-                        <button className='viewcart--btn' onClick={this.props.handleCartModal}>
+                        <button className='viewcart--btn' onClick={handleCartModal}>
                             View Bag
                         </button>
                     </Link>
                     <Link to='/cart'>
-                        <button className='checkout--btn' onClick={this.props.handleCartModal}>
+                        <button className='checkout--btn' onClick={handleCartModal}>
                             Check out
                         </button>
                     </Link>

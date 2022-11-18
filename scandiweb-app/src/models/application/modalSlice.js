@@ -14,5 +14,5 @@ const backgroundBlurSlice = createSlice({
     }
 
 })
-export const { addBackgroundBlur, removeBackgroundBlur } = backgroundBlurSlice.actions;
+export const { addBackgroundBlur} = backgroundBlurSlice.actions;
 export const backgroundBlurReducer = backgroundBlurSlice.reducer;

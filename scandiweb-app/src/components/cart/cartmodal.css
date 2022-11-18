@@ -36,8 +36,11 @@
     font-weight: 600;
     color: #1D1F22;
     font-size: 14px;
-    border: 2px solid #1D1F22;
+    border: 1px solid #1D1F22;
     background: none;
+}
+.viewcart--btn:hover{
+    background-color: rgba(57, 55, 72, 0.11);
 }
 .checkout--btn {
     width: 140px;

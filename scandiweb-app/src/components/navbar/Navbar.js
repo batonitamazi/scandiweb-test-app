@@ -15,7 +15,6 @@ class Navbar extends Component {
   handleModal = () => {
     this.setState({ showCartModal: false })
     this.setState({ show: !this.state.show })
-    this.props.addBackgroundBlur(this.state.show)
   }
   handleCartModal = () => {
     this.setState({ showCartModal: !this.state.showCartModal })
@@ -24,17 +23,29 @@ class Navbar extends Component {
   }
 
   render() {
+    const {
+      categories,
+      active,
+      activeChange,
+      items: {
+        cartItems,
+      },
+      currencies: {
+        activeCurrency
+      }
+    }
+      = this.props
     return (
       <div className='nav'>
         <ul className='nav--list'>
-          {this.props.categories?.map((item, index) => {
+          {categories?.map((item, index) => {
             return (
               <Link to={`/${item.name}`} key={index}>
                 <button
                   id={index}
                   className="nav--item"
-                  style={Number(this.props?.active) === index ? { borderBottom: `2px solid #5ECE7B` } : null}
-                  onClick={(e) => (this.props.activeChange(e))}
+                  style={Number(active) === index ? { borderBottom: `2px solid #5ECE7B` } : null}
+                  onClick={(e) => (activeChange(e))}
                 >
                   {item.name}
                 </button>
@@ -47,8 +58,8 @@ class Navbar extends Component {
         </Link>
         <div className='nav--actions'>
           <div className='currencie-picker' onClick={this.handleModal}>
-            {this.props.currencies?.activeCurrency[1]?.symbol && (
-              <span className='currency--tag'>{this.props.currencies.activeCurrency[1].symbol}</span>
+            {activeCurrency[1]?.symbol && (
+              <span className='currency--tag'>{activeCurrency[1].symbol}</span>
             )}
             <CurrenciesCard show={this.state.show} />
             <img className='dropdown--icon' alt='dropdown' src='./assets/dropdown.png' />
@@ -58,7 +69,7 @@ class Navbar extends Component {
             this.props.items.cartItems.length > 0 && (
               <div className='quantity--container'>
                 <span>
-                  {this.props.items.cartItems && this.props.items.cartItems.reduce((acumulator, curValue) => {
+                  {cartItems && cartItems.reduce((acumulator, curValue) => {
                     acumulator += Number(curValue.quantity)
                     return acumulator
                   }, 0)}
@@ -66,7 +77,7 @@ class Navbar extends Component {
               </div>
             )
           }
-          <CartModal show={this.state.showCartModal} handleCartModal={this.handleCartModal}/>
+          <CartModal show={this.state.showCartModal} handleCartModal={this.handleCartModal} />
         </div>
       </div>
     )

@@ -7,14 +7,15 @@ class CurrenciesCard extends Component {
 
 
     render() {
+        const {show, currencies, activeCurrency} = this.props
         return (
-                <div className={this.props.show ? 'currencies--card' : 'currencies--card--hide'}>
-                    {this.props.currencies[0] && this.props.currencies[0].map((item) => {
+                <div className={show ? 'currencies--card' : 'currencies--card--hide'}>
+                    {currencies[0] && currencies[0].map((item) => {
                         return (
                             <div
                                 className={item.isActive ? 'currency--picker--active' : 'currency--picker'}
                                 key={item.label}
-                                onClick={() => this.props.activeCurrency(item)}
+                                onClick={() => activeCurrency(item)}
                             >
                                 <h6>{item.symbol}</h6>
                                 <h6>{item.label}</h6>
