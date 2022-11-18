@@ -22,6 +22,9 @@
     font-size: 18px;
     font-weight: 500;
 }
+.currency--picker:hover{
+    background-color: #EEEEEE;
+}
 .currency--picker--active {
     height: 45px;
     display: flex;

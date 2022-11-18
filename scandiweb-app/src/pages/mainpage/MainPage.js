@@ -45,7 +45,7 @@ class MainPage extends Component {
                                 <img src={item.gallery[0]} alt="product" className="product--image" />
                                 <img src='./assets/addtocart.png' className={item.inStock ? 'addto--cart' : 'hidden--cart'} alt='cart' onClick={() => this.props.addtoCart(item)} />
                                 <div className='card--subcontainer'>
-                                    <Link to={`/${item.id}`}>
+                                    <Link to={`/${item.id}`} className="text--link">
                                         <span className='item--span'>{item.name}</span>
                                         {this.props.currencies[1] && (
                                             <h4 className='item--price'>
