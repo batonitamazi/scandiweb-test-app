@@ -7,25 +7,26 @@ export class Attributes extends Component {
 
 
   render() {
-    const {attributes, onAttributeSelect} = this.props;    
+    const {attributes, onAttributeSelect, isSmall} = this.props;    
     return attributes && attributes.map((attribute, index) => {
+      const isColorAttribute = (attribute.id === 'Color');
         return (
           <div className='choice--container' key={index}>
             <h4 className='container--subtitle'>{attribute.name}:</h4>
             <div className='choices--container'>
               {attribute.items.map(({value, id}) => {
                   const colorStyle = {
-                    backgroundColor: `${value}`
+                    backgroundColor: `${value}`,
+                    border: 'none',
                   };
                   const otherStyle = {
                     border: `1px solid ${value}`,
-                    color: `${value}`
+                    color: `${value}`,
                   };
-                  const isColorAttribute = id === 'Color';
                   return <button
                       key={id}
                       className="choice--btn"
-                      style={isColorAttribute ? colorStyle : otherStyle}
+                      style={isColorAttribute ?  colorStyle: otherStyle}
                       onClick = {() => onAttributeSelect(id, value)}
                     >
                       {isColorAttribute ? null : value}

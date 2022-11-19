@@ -63,6 +63,7 @@
 }
 .cart--product--card {
     height: 42%;
+    padding-top: 42px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -94,12 +95,12 @@
     font-family: 'Raleway';
     font-weight: 400;
     cursor: pointer;
-    border: 1px solid #1D1F22;
 }
 .product--card--actions {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
     gap: 3%;
 }
 .cart--quantity--btn {
@@ -117,11 +118,13 @@
 }
 .card--item--image {
     width: 121px;
+    object-fit: contain;
     height: 191px;
 }
 .card--quantity--actions {
-    height: 190px;
+    height: 182px;
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;

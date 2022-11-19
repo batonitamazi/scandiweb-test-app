@@ -8,7 +8,6 @@ class ProductPrice extends Component {
             currencies,
             prices,
         } = this.props
-        console.log(this.props)
         return (
             <>
                 {prices ?

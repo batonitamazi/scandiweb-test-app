@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { incrementQuantity, decrementQuantity } from '../../models/application/cartSlice'
-import {Attributes} from '../attributes/Attributes'
-class CartProduct extends Component {
+import {incrementQuantity, decrementQuantity} from '../../../models/application/cartSlice'
+import Attributes from '../../attributes/Attributes'
+
+class MiniCartProduct extends Component {
     render() {
         const {
             items,
@@ -15,23 +16,23 @@ class CartProduct extends Component {
                 {
                     items.map((item, index) => {
                         return (
-                            <div className='cart--item' key={index}>
-                                <div className='cart--item--description'>
-                                    <h1 className='product--title'>{item.brand}</h1>
-                                    <h1 className='product--subtitle'>{item.name}</h1>
-                                    <h1 className='product--price'>
+                            <div className='cart--product--card' key={index}>
+                                <div className='product--card--description'>
+                                    <h1 className='card--product--heading'>{item.brand}</h1>
+                                    <h1 className='card--product--heading'>{item.name}</h1>
+                                    <h1 className='card--product--price'>
                                         {(item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount * item.quantity)}
                                         {item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
                                     </h1>
                                     <Attributes attributes={item.attributes}/>
                                 </div>
-                                <div className='cart--item--gallery'>
-                                    <div className='cart--quantity--actions'>
-                                        <button className='quantity--btn' onClick={() => incrementQuantity(item)}>+</button>
+                                <div className='product--card--actions'>
+                                    <div className='card--quantity--actions'>
+                                        <button className='cart--quantity--btn' onClick={() => incrementQuantity(item)}>+</button>
                                         <span className='cart--item--quantity'>{item.quantity}</span>
-                                        <button className='quantity--btn' onClick={() => decrementQuantity(item)}>-</button>
+                                        <button className='cart--quantity--btn' onClick={() => decrementQuantity(item)}>-</button>
                                     </div>
-                                    <img className='cart--item--image' src={item.gallery[0]} alt="product in cart" />
+                                    <img className='card--item--image' src={item.gallery[0]} alt="product in cart" />
                                 </div>
                             </div>
                         )
@@ -48,7 +49,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = { incrementQuantity, decrementQuantity };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartProduct)
+export default connect(mapStateToProps, mapDispatchToProps)(MiniCartProduct)
 
 
 

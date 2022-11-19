@@ -4,7 +4,7 @@ import './navbar.css'
 import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
 import CurrenciesCard from '../currencyModal/CurrenciesCard'
-import CartModal from '../cart/CartModal'
+import CartModal from '../minicart/CartModal'
 import { addBackgroundBlur } from '../../models/application/modalSlice'
 
 class Navbar extends Component {

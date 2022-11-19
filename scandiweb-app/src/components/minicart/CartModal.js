@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import CartProduct from '../cartproduct/CartProduct'
 import './cartmodal.css'
+import MiniCartProduct from './minicartproduct/MiniCartProduct'
 
 class CartModal extends Component {
     render() {
@@ -20,7 +20,7 @@ class CartModal extends Component {
                     }, 0)}
                     items</span></h1>
                 <div className='card--products'>
-                    <CartProduct />
+                    <MiniCartProduct />
                 </div>
                 <div className='total--card'>
                     <h1 className='cart--card--heading'>Total:</h1>
