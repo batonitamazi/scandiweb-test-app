@@ -14,18 +14,14 @@ export class Attributes extends Component {
             <h4 className='container--subtitle'>{attribute.name}:</h4>
             <div className='choices--container'>
               {attribute.items.map(({value, id}) => {
-
                   const colorStyle = {
                     backgroundColor: `${value}`
                   };
-
                   const otherStyle = {
                     border: `1px solid ${value}`,
                     color: `${value}`
                   };
-
                   const isColorAttribute = id === 'Color';
-
                   return <button
                       key={id}
                       className="choice--btn"

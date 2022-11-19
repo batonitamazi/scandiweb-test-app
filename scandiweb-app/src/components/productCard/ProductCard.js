@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {addtoCart} from '../../models/application/cartSlice'
 import { Link } from 'react-router-dom';
+import ProductPrice from '../productPrices/ProductPrice';
 
 class ProductCard extends Component {
     render() {
@@ -28,9 +29,9 @@ class ProductCard extends Component {
                     <Link to={`/${id}`} className="text--link">
                         <span className='item--span'>{item.name}</span>
                         {currencies[1] && (
+
                             <h4 className='item--price'>
-                                {prices[prices.findIndex((element) => element.currency.label === currencies[1]?.label)].amount}
-                                {prices[prices.findIndex((element) => element.currency.label === currencies[1]?.label)].currency.symbol}
+                                <ProductPrice prices={prices}/>
                             </h4>
                         )}
                     </Link>

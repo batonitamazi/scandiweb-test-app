@@ -2,66 +2,25 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import './cartpage.css'
 import { incrementQuantity, decrementQuantity } from '../../models/application/cartSlice'
+import CartProduct from '../../components/cartproduct/CartProduct';
 
 class CartPage extends Component {
   render() {
     const {
       items,
       currencies,
-      incrementQuantity,
-      decrementQuantity
     } = this.props
     return (
       <div className='items--container'>
         <h1 className='cart--heading'>
           Cart:
         </h1>
-        {items.map((item, index) => {
-          return (
-            <div className='cart--item' key={index}>
-              <div className='cart--item--description'>
-                <h1 className='product--title'>{item.brand}</h1>
-                <h1 className='product--subtitle'>{item.name}</h1>
-                <h1 className='product--price'>
-                  {(item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount * item.quantity).toFixed(2)}
-                  {item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
-                </h1>
-                {/* {item.attributes.map((item, index) => {
-                  return (
-                    <div className='choice--container' key={index}>
-                      <h4 className='container--subtitle'>{item.name}:</h4>
-                      <div className='choices--container'>
-                        {item.items.map((miniItem, index) => {
-                          return (
-                            <button key={index} className="choice--btn" style={{ backgroundColor: `${miniItem.value}`, border: `1px solid ${miniItem.value}`, color: `${miniItem.value}` }}>
-                              {miniItem.id}
-                            </button>
-                          )
-                        })}
-                      </div>
-                    </div>
-                  )
-                })} */}
-              </div>
-              <div className='cart--item--gallery'>
-                <div className='cart--quantity--actions'>
-                  <button className='quantity--btn' onClick={() => incrementQuantity(item)}>+</button>
-                  <span className='cart--item--quantity'>{item.quantity}</span>
-                  <button className='quantity--btn' onClick={() => decrementQuantity(item)}>-</button>
-                </div>
-                <img className='cart--item--image' src={item.gallery[0]} alt="product in cart" />
-              </div>
-
-            </div>
-
-          )
-
-        })}
+        <CartProduct />
         <div className='cartpage--payments'>
           <h1 className='payments--heading'>Tax 21%:
             {items && items.reduce((acumulator, curValue) => {
               acumulator += Number(curValue.prices[curValue.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount * curValue.quantity);
-              return acumulator.toFixed(2)
+              return acumulator
             }, 0) * 21 / 100}
             {items[0]?.prices[items[0]?.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
             <span className='product--price'>
@@ -79,7 +38,7 @@ class CartPage extends Component {
             <span className='product--price'>
               {items && items.reduce((acumulator, curValue) => {
                 acumulator += Number(curValue.prices[curValue.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount * curValue.quantity);
-                return acumulator.toFixed(2)
+                return acumulator
               }, 0)}
               {items[0]?.prices[items[0]?.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
             </span>
