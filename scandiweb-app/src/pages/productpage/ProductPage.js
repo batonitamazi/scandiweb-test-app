@@ -12,7 +12,13 @@ import ProductPrice from '../../components/productPrices/ProductPrice'
 class ProductPage extends Component {
   constructor() {
     super()
-    this.state = { product: [], currentImage: "", selectedAttributes: { 'size': 'xl', 'color': 'red' } }
+    this.state = {
+      product: [],
+      currentImage: "",
+      selectedAttributes:
+      {
+      }
+    }
   }
   componentDidMount() {
     this.fetchProduct();
@@ -40,14 +46,13 @@ class ProductPage extends Component {
 
     const newProduct = structuredClone(product);
 
-    newProduct.attributes = this.state.selectedAttributes;
+    newProduct.activeAttributes = this.state.selectedAttributes;
 
-    return newProduct;
-
+    return newProduct;  
   }
   onAttributeSelect = (attributeId, attributeValue) => {
-    console.log(attributeId, attributeValue);
-    this.setState({ ...this.state.selectedAttributes, [attributeId]: attributeValue });
+    console.log(attributeId, attributeValue)
+    this.setState({selectedAttributes: { ...this.state.selectedAttributes, [attributeId]: attributeValue }});
   }
 
   render() {
@@ -57,6 +62,7 @@ class ProductPage extends Component {
       },
       backgroundBlur,
     } = this.state;
+    console.log(this.state.selectedAttributes)
     return (
       <div className='product--container'>
         <div className={backgroundBlur ? 'images--container--blur' : 'images--container'}>
@@ -73,7 +79,7 @@ class ProductPage extends Component {
               <h1 className='product--title'>{this.state.product?.brand}</h1>
               <h1 className='product--subtitle'>{this.state.product?.name}</h1>
             </div>
-            <Attributes attributes={attributes} onAttributeSelect={this.onAttributeSelect} />
+            <Attributes attributes={attributes} onAttributeSelect={this.onAttributeSelect} selectedAttributes={this.state.selectedAttributes} />
             <div className='choice--container'>
               <h4 className='container--subtitle'>Price:</h4>
               <h1 className='product--price'>

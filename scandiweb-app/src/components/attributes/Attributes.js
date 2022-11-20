@@ -4,10 +4,10 @@ import React, { Component } from 'react'
 
 
 export class Attributes extends Component {
-
-
   render() {
-    const {attributes, onAttributeSelect, isSmall} = this.props;    
+    const {attributes, onAttributeSelect, selectedAttributes} = this.props;    
+    console.log(selectedAttributes)
+    
     return attributes && attributes.map((attribute, index) => {
       const isColorAttribute = (attribute.id === 'Color');
         return (
@@ -27,7 +27,7 @@ export class Attributes extends Component {
                       key={id}
                       className="choice--btn"
                       style={isColorAttribute ?  colorStyle: otherStyle}
-                      onClick = {() => onAttributeSelect(id, value)}
+                      onClick = {() => onAttributeSelect(attribute.id, value)}
                     >
                       {isColorAttribute ? null : value}
                     </button>

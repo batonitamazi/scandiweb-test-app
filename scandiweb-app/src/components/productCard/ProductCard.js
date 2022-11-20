@@ -29,7 +29,6 @@ class ProductCard extends Component {
                     <Link to={`/${id}`} className="text--link">
                         <span className='item--span'>{item.name}</span>
                         {currencies[1] && (
-
                             <h4 className='item--price'>
                                 <ProductPrice prices={prices}/>
                             </h4>
