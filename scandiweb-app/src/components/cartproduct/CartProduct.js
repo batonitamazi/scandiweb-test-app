@@ -10,6 +10,7 @@ class CartProduct extends Component {
             incrementQuantity,
             decrementQuantity,
         } = this.props
+        console.log(items)
         return (
             <>
                 {

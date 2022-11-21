@@ -11,19 +11,13 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addtoCart: (state, action) => {
-            const alreadyInCart = state.cartItems.find((item) => item.id === action.payload.id)
+            const alreadyInCart = state.cartItems.find((item) => item.unicalId === action.payload.unicalId)
             if (alreadyInCart) {
-                if (Object.values(alreadyInCart.activeAttributes) !== Object.values(action.payload.activeAttributes)) {
-                    state.cartItems.push({ ...action.payload, quantity: 1 })
-                }
-                else {
                     alreadyInCart.quantity++;   
-                }
             }
-            else {
+            else if(action.payload){
                 state.cartItems.push({ ...action.payload, quantity: 1 })
             }
-
         },
         incrementQuantity: (state, action) => {
             const item = state.cartItems.find((item) => item.id === action.payload.id)

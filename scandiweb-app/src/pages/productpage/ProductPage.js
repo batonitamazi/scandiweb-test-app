@@ -17,6 +17,7 @@ class ProductPage extends Component {
       currentImage: "",
       selectedAttributes:
       {
+
       }
     }
   }
@@ -32,28 +33,36 @@ class ProductPage extends Component {
           productId: this.props.match.params.id,
         },
       });
-      this.setState({ product: { ...result.data.product } });
+      this.setState({ product: { ...result.data.product, [result.data.product.attributes.isActive] : false }});
       this.setState({ image: result.data.product.gallery[0] })
     } catch (error) {
       console.log(error)
     }
   }
-
   createProductWithSelectedAttribtues() {
     const {
       product
     } = this.state;
 
+
     const newProduct = structuredClone(product);
-
     newProduct.activeAttributes = this.state.selectedAttributes;
+    newProduct.unicalId = newProduct.id.slice(0, 6) + Object.values(this.state.selectedAttributes)
 
-    return newProduct;  
+    if (Object.keys(newProduct.activeAttributes).length < newProduct.attributes.length) {
+      alert("missing attributes")
+    }
+    else{
+      return newProduct
+    }
+    
   }
-  onAttributeSelect = (attributeId, attributeValue) => {
-    console.log(attributeId, attributeValue)
-    this.setState({selectedAttributes: { ...this.state.selectedAttributes, [attributeId]: attributeValue }});
+  
+  onAttributeSelect = (attributeId, attributeValue) => {   
+
+    this.setState({ selectedAttributes: { ...this.state.selectedAttributes, [attributeId]: attributeValue }});
   }
+
 
   render() {
     const {
@@ -61,8 +70,8 @@ class ProductPage extends Component {
         attributes
       },
       backgroundBlur,
+      selectedAttributes
     } = this.state;
-    console.log(this.state.selectedAttributes)
     return (
       <div className='product--container'>
         <div className={backgroundBlur ? 'images--container--blur' : 'images--container'}>
@@ -79,7 +88,7 @@ class ProductPage extends Component {
               <h1 className='product--title'>{this.state.product?.brand}</h1>
               <h1 className='product--subtitle'>{this.state.product?.name}</h1>
             </div>
-            <Attributes attributes={attributes} onAttributeSelect={this.onAttributeSelect} selectedAttributes={this.state.selectedAttributes} />
+            <Attributes attributes={attributes} onAttributeSelect={this.onAttributeSelect} selectedAttributes={selectedAttributes} />
             <div className='choice--container'>
               <h4 className='container--subtitle'>Price:</h4>
               <h1 className='product--price'>
@@ -90,6 +99,7 @@ class ProductPage extends Component {
             <button className='cart--add' onClick={() => this.props.addtoCart(this.createProductWithSelectedAttribtues())}>
               Add to cart
             </button>
+            
             <p dangerouslySetInnerHTML={{
               __html: this.state.product?.description
             }}>
@@ -103,6 +113,7 @@ class ProductPage extends Component {
 const mapStateToProps = (state) => ({
   backgroundBlur: state.backgroundBlur.backgroundBlur,
 });
+
 
 const mapDispatchToProps = { addtoCart };
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

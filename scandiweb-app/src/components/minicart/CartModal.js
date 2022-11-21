@@ -11,6 +11,7 @@ class CartModal extends Component {
             currencies,
             handleCartModal,
         } = this.props
+        console.log(items)
         return (
             <div className={show ? 'cart--card' : 'cart--card--hide'}>
                 <h1 className='cart--card--heading'>My Bag. <span className='cart--span'>
@@ -25,8 +26,8 @@ class CartModal extends Component {
                 <div className='total--card'>
                     <h1 className='cart--card--heading'>Total:</h1>
                     <h1 className='cart--card--heading'>
-                        {items && items.reduce((acumulator, curValue) => {
-                            acumulator += Number(curValue.prices[curValue.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount * curValue.quantity);
+                        {items && items?.reduce((acumulator, curValue) => {
+                            acumulator += Number(curValue.prices[curValue.prices?.findIndex((element) => element.currency.label === currencies[1].label)].amount * curValue.quantity);
                             return acumulator
                         }, 0)}
                         {items[0]?.prices[items[0]?.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
