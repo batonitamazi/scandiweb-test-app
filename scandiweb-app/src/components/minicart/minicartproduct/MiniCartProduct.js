@@ -11,6 +11,7 @@ class MiniCartProduct extends Component {
             incrementQuantity,
             decrementQuantity,
         } = this.props
+        
         return (
             <>
                 {
@@ -24,7 +25,7 @@ class MiniCartProduct extends Component {
                                         {(item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount * item.quantity)}
                                         {item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
                                     </h1>
-                                    <Attributes attributes={item.attributes}/>
+                                    <Attributes attributes={item.attributes} activeAttributes={item.activeAttributes}/>
                                 </div>
                                 <div className='product--card--actions'>
                                     <div className='card--quantity--actions'>

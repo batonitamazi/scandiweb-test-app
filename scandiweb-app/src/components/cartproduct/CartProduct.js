@@ -10,7 +10,6 @@ class CartProduct extends Component {
             incrementQuantity,
             decrementQuantity,
         } = this.props
-        console.log(items)
         return (
             <>
                 {
@@ -24,7 +23,7 @@ class CartProduct extends Component {
                                         {(item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount * item.quantity)}
                                         {item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
                                     </h1>
-                                    <Attributes attributes={item.attributes}/>
+                                    <Attributes attributes={item.attributes} activeAttributes={item.activeAttributes}/>
                                 </div>
                                 <div className='cart--item--gallery'>
                                     <div className='cart--quantity--actions'>

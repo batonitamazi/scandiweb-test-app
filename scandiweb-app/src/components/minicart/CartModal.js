@@ -11,7 +11,6 @@ class CartModal extends Component {
             currencies,
             handleCartModal,
         } = this.props
-        console.log(items)
         return (
             <div className={show ? 'cart--card' : 'cart--card--hide'}>
                 <h1 className='cart--card--heading'>My Bag. <span className='cart--span'>
