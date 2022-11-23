@@ -16,16 +16,16 @@ import { addBackgroundBlur } from './models/application/modalSlice'
 class App extends Component {
   constructor() {
     super();
-    this.state = { categories: [], currencies: [], products: [], active: 0 };
+    this.state = { categories: [], currencies: [], active: 0 };
   }
 
 
   componentDidMount() {
-    this.fetchQuery();
+    this.fetchCategories();
     this.fetchCurrencies();
   }
 
-  async fetchQuery() {
+  async fetchCategories() {
     const result = await client.query({
       query: GET_CATEGORIES,
     });
@@ -47,21 +47,22 @@ class App extends Component {
   }
   render() {
     const {backgroundBlur} = this.props
+    const {categories, active} = this.state
     return (
       <div className={backgroundBlur ? 'App--blurred' : 'App'}>
         <Router>
-          <Navbar categories={this.state.categories} active={this.state.active} activeChange={this.handleActiveChange} handleBackground={this.handleBackground} />
+          <Navbar categories={categories} active={active} activeChange={this.handleActiveChange} handleBackground={this.handleBackground} />
           <Switch>
             <Route path='/' exact render={() => <Redirect to="/all" />} />
             <Route path='/cart' exact component={CartPage} />
-            {this.state.categories?.map((item, index) => {
+            {categories?.map((item) => {
               return (
-                <Route key={index} path={`/${item.name}`} component={MainPage} exact />
+                <Route key={item.name} path={`/${item.name}`} component={MainPage} exact />
               )
             })}
-            {this.state.categories?.map((item, index) => {
+            {categories?.map((item) => {
               return (
-                <Route key={index} path={`/:id`} component={ProductPage} exact />
+                <Route key={item.name} path={`/:id`} component={ProductPage} exact />
               )
             })}
           </Switch>

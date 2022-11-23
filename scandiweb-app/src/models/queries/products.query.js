@@ -21,9 +21,9 @@ export const GET_PRODUCTS = gql`
                     name
                     type
                     items {
+                        id
                         displayValue
                         value
-                        id
                     }
                 }
             }

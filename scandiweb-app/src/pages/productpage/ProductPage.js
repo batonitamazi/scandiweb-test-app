@@ -6,7 +6,7 @@ import { addtoCart } from '../../models/application/cartSlice'
 import { Attributes } from '../../components/attributes/Attributes'
 import './productpage.css'
 import ProductPrice from '../../components/productPrices/ProductPrice'
-
+import createProductWithSelectedAttribtues from '../../utils/createProduct'
 
 
 class ProductPage extends Component {
@@ -21,7 +21,6 @@ class ProductPage extends Component {
   componentDidMount() {
     this.fetchProduct();
   }
-
   async fetchProduct() {
     try {
       const result = await client.query({
@@ -30,37 +29,19 @@ class ProductPage extends Component {
           productId: this.props.match.params.id,
         },
       });
-      this.setState({ product: { ...result.data.product, [result.data.product.attributes.isActive]: false } });
-      this.setState({ image: result.data.product.gallery[0] })
+      this.setState({ product: { ...result.data.product, }});
+      this.setState({image: result.data.product.gallery[0]})
     } catch (error) {
       console.log(error)
     }
   }
-  createProductWithSelectedAttribtues() {
-    const {
-      product
-    } = this.state;
-    const newProduct = structuredClone(product);
-    // newProduct.unicalId = newProduct.id.slice(0, 6) + this.state.activeAttributes[0]
-    // if (newProduct.activeAttributes.length < newProduct.attributes.length) {
-    //   alert("missing attributes")
-    // }
-    newProduct.activeAttributes = this.state.activeAttributes;
-    newProduct.unicalId = newProduct.id.slice(0, 6) + Object.values(this.state.activeAttributes)
-    if (Object.keys(newProduct.activeAttributes).length < newProduct.attributes.length) {
-      alert("missing attributes")
-    }
-
-    else {
-      return newProduct 
-    }
-  }
-
   onAttributeSelect = (attributeId, attributeValue) => {   
     this.setState({ activeAttributes: { ...this.state.activeAttributes, [attributeId]: attributeValue }});
   }
+  
   render() {
     const {
+      product,
       product: {
         attributes
       },
@@ -89,9 +70,8 @@ class ProductPage extends Component {
               <h1 className='product--price'>
                 <ProductPrice prices={this.state.product.prices} />
               </h1>
-
             </div>
-            <button className='cart--add' onClick={() => {this.props.addtoCart(this.createProductWithSelectedAttribtues())}}>
+            <button className='cart--add' onClick={() => {this.props.addtoCart(createProductWithSelectedAttribtues(product, activeAttributes))}}>
               Add to cart
             </button>
 

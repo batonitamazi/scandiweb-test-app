@@ -24,23 +24,23 @@ class MainPage extends Component {
                 category: `${this.props.location.pathname.slice(1, 10)}`,
             },
         });
-        console.log(result.data.category.products)
         this.setState({ products: result.data.category.products });
     }
-    handleActiveChange = (e) => {
-        this.setState({ active: Number(e.target.id) })
-    }
+    
 
     render() {
         const {
             backgroundBlur
         } = this.props;
+        const {
+            products
+        } = this.state
         
         return (
             <div className='items--container'>
-                <h1 className='category--heading'>Category name</h1>
+                <h1 className='category--heading'>{this.props.location.pathname.slice(1, 10)}</h1>
                 <div className='category--items'>
-                    {this.state.products?.map((item) => {
+                    {products?.map((item) => {
                         return (
                             <ProductCard backgroundBlur={backgroundBlur} item={item} key={item.id}/>
                         )
@@ -50,6 +50,7 @@ class MainPage extends Component {
         )
     }
 }
+
 const mapStateToProps = (state) => ({
     currencies: state.currencies.activeCurrency,
     backgroundBlur: state.backgroundBlur.backgroundBlur,

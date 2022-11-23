@@ -1,22 +1,22 @@
 .product--container { 
+    width: 90%;
     padding-top: 72px;
     display: flex;
-    width: 90%;
     flex-direction: row;
     justify-content: flex-start;
     gap: 10%;
-    max-height: 100vh;
+    height: 80vh;
 
 }
 .images--container {
-    height: 311px;
+    height: 20%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     gap: 10%;
 }
 .images--container--blur {
-    height: 311px;
+    height: 20%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -27,25 +27,30 @@
     cursor: pointer;
     width: 70px;
     height: 80px;
+    z-index: 2;
 }
 .description--container{
-    max-height: 311px;
+    width: 90%;
+    max-height: 80%;
     display: flex;
     flex-direction: row;
     gap: 15%;
 }
 .description--container--blur {
-    max-height: 311px;
+    width: 90%;
+    max-height: 60%;
     display: flex;
     flex-direction: row;
     gap: 15%;
     z-index: -4;
 }
 .main--image {
-    height: 511px;
+    max-height: 100%;
+    z-index: -4;
 }
 .product--info--card {
-    height: 100%;
+    height: 60%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -54,7 +59,6 @@
 .product--title  {
     font-size: 30px;
     font-weight: 600;
-    
 }
 .product--subtitle{ 
     font-size: 30px;    
@@ -119,7 +123,6 @@
 }
 .cart--add {
     min-height: 52px;
-    width: 292px;
     background-color: #5ECE7B;
     color: #FFFFFF;
     text-transform: uppercase;
@@ -154,4 +157,26 @@
     font-family: 'Raleway';
     cursor: pointer;
     border: 4px solid rgba(94, 206, 123, 1);
+}
+
+@media(width<800px){
+    .product--container {
+        flex-direction: column;
+    }
+    .images--container--blur {
+        max-width: 100%;
+        flex-direction: row;
+
+    }
+    .images--container{
+        max-width: 100%;
+        flex-direction: row;
+        gap: 5%;
+    }
+    .mini--image {
+        cursor: pointer;
+        width: 50px;
+        height: 70px;
+        z-index: 2;
+    }
 }

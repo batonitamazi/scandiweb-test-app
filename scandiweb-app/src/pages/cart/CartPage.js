@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './cartpage.css'
 import { incrementQuantity, decrementQuantity } from '../../models/application/cartSlice'
 import CartProduct from '../../components/cartproduct/CartProduct';
+import currencyLabel from '../../utils/currencyLabel';
 
 class CartPage extends Component {
   render() {
@@ -22,7 +23,8 @@ class CartPage extends Component {
               acumulator += Number(curValue.prices[curValue.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount * curValue.quantity);
               return acumulator
             }, 0) * 21 / 100}
-            {items[0]?.prices[items[0]?.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
+              {currencyLabel(items, currencies)}
+            
             <span className='product--price'>
             </span>
           </h1>
@@ -40,7 +42,7 @@ class CartPage extends Component {
                 acumulator += Number(curValue.prices[curValue.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount * curValue.quantity);
                 return acumulator
               }, 0)}
-              {items[0]?.prices[items[0]?.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
+              {currencyLabel(items, currencies)}
             </span>
           </h1>
           <button className='checkout--btn'>
