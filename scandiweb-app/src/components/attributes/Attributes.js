@@ -5,22 +5,22 @@ import React, { Component } from 'react'
 
 export class Attributes extends Component {
   render() {
-    const { attributes, onAttributeSelect, activeAttributes } = this.props;
+    const { attributes, onAttributeSelect, activeAttributes, isCart, isSmall } = this.props;
       return attributes && attributes.map((attribute, index) => {
       return (
-        <div className='choice--container' key={index}>
+        <div className={isCart ? 'choice--container--cart':'choice--container'} key={index}>
           <h4 className='container--subtitle'>{attribute.name}:</h4>
-          <div className='choices--container'>
+          <div className={isCart ? 'choices--container--cart':'choices--container'}>
             {activeAttributes && attribute.items.map(({ value, id }) => {
               switch (attribute.id) {
                 case "Color":
                   return (
                     <button
-                      className={String(value)  === String(activeAttributes[`${attribute.id}`]) ? 'color--btn-active' :'color--btn'}
+                      className={String(value)  === String(activeAttributes[`${attribute.id}`]) ? isSmall ? 'color--btn-small':'color--btn-small-active' : isSmall ? 'color--btn-small':'color--btn'}
                       style={{ backgroundColor: `${value}`}}
                       onClick = {onAttributeSelect ?  () => onAttributeSelect(attribute.id, value) : null}
                       key={id}
-                    >
+                    > 
                     </button>
                   )
                 default:
@@ -29,8 +29,8 @@ export class Attributes extends Component {
                       key={id}
                       className={
                         String(value) === String(activeAttributes[`${attribute.id}`])
-                        ? 'choice--btn-active'
-                          : 'choice--btn'
+                        ? isSmall ? 'choice--btn-small-active' : 'choice--btn-active'
+                          : isSmall ? 'choice--btn-small' : 'choice--btn'
                       }
                       onClick={onAttributeSelect ?  () => onAttributeSelect(attribute.id, value) : null}
                     >

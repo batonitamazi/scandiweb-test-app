@@ -22,10 +22,10 @@ class MiniCartProduct extends Component {
                                     <h1 className='card--product--heading'>{item.brand}</h1>
                                     <h1 className='card--product--heading'>{item.name}</h1>
                                     <h1 className='card--product--price'>
-                                        {(item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount * item.quantity)}
+                                        {(item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount)}
                                         {item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
                                     </h1>
-                                    <Attributes attributes={item.attributes} activeAttributes={item.activeAttributes}/>
+                                    <Attributes attributes={item.attributes} activeAttributes={item.activeAttributes} isSmall={true}/>
                                 </div>
                                 <div className='product--card--actions'>
                                     <div className='card--quantity--actions'>

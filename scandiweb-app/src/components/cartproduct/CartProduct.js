@@ -35,7 +35,7 @@ class CartProduct extends Component {
                                         {(item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].amount * item.quantity)}
                                         {item.prices[item.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
                                     </h1>
-                                    <Attributes attributes={item.attributes} activeAttributes={item.activeAttributes} />
+                                        <Attributes attributes={item.attributes} activeAttributes={item.activeAttributes} isCart={true}/>
                                 </div>
                                 <div className='cart--item--gallery'>
                                     <div className='cart--quantity--actions'>

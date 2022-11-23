@@ -5,7 +5,6 @@ import { incrementQuantity, decrementQuantity } from '../../models/application/c
 import CartProduct from '../../components/cartproduct/CartProduct';
 import currencyLabel from '../../utils/currencyLabel';
 import priceCalculator from '../../utils/priceCalculator';
-import prouctCounter from '../../utils/productCounter'
 import productCounter from '../../utils/productCounter';
 
 class CartPage extends Component {
@@ -29,7 +28,6 @@ class CartPage extends Component {
           </h1>
           <h1 className='payments--heading'>Quantity:
             {productCounter(items)}
-
             <span className='product--price'>
             </span>
           </h1>
