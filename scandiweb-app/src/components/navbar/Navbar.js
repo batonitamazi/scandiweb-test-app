@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import CurrenciesCard from '../currencyModal/CurrenciesCard'
 import CartModal from '../minicart/CartModal'
 import { addBackgroundBlur } from '../../models/application/modalSlice'
+import productCounter from '../../utils/productCounter'
 
 class Navbar extends Component {
   constructor() {
@@ -69,10 +70,7 @@ class Navbar extends Component {
             this.props.items.cartItems.length > 0 && (
               <div className='quantity--container'>
                 <span>
-                  {cartItems && cartItems.reduce((acumulator, curValue) => {
-                    acumulator += Number(curValue.quantity)
-                    return acumulator
-                  }, 0)}
+                  {productCounter(cartItems)}
                 </span>
               </div>
             )

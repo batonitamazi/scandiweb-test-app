@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './cartmodal.css'
 import MiniCartProduct from './minicartproduct/MiniCartProduct'
+import priceCalculator from '../../utils/priceCalculator'
+import currencyLabel from '../../utils/currencyLabel'
+import productCounter from '../../utils/productCounter'
 
 class CartModal extends Component {
     render() {
@@ -14,10 +17,7 @@ class CartModal extends Component {
         return (
             <div className={show ? 'cart--card' : 'cart--card--hide'}>
                 <h1 className='cart--card--heading'>My Bag. <span className='cart--span'>
-                    {items && items.reduce((acumulator, curValue) => {
-                        acumulator += Number(curValue.quantity)
-                        return acumulator
-                    }, 0)}
+                    {productCounter(items)}
                     items</span></h1>
                 <div className='card--products'>
                     <MiniCartProduct />
@@ -25,11 +25,8 @@ class CartModal extends Component {
                 <div className='total--card'>
                     <h1 className='cart--card--heading'>Total:</h1>
                     <h1 className='cart--card--heading'>
-                        {items && items?.reduce((acumulator, curValue) => {
-                            acumulator += Number(curValue.prices[curValue.prices?.findIndex((element) => element.currency.label === currencies[1].label)].amount * curValue.quantity);
-                            return acumulator
-                        }, 0)}
-                        {items[0]?.prices[items[0]?.prices.findIndex((element) => element.currency.label === currencies[1].label)].currency.symbol}
+                        {priceCalculator(items, currencies)}
+                        {currencyLabel(items, currencies)}
                     </h1>
                 </div>
                 <div className='cart--component--actions'>

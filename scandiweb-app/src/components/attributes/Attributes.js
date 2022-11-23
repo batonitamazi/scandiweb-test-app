@@ -6,8 +6,7 @@ import React, { Component } from 'react'
 export class Attributes extends Component {
   render() {
     const { attributes, onAttributeSelect, activeAttributes } = this.props;
-    console.log(activeAttributes)
-    return attributes && attributes.map((attribute, index) => {
+      return attributes && attributes.map((attribute, index) => {
       return (
         <div className='choice--container' key={index}>
           <h4 className='container--subtitle'>{attribute.name}:</h4>
