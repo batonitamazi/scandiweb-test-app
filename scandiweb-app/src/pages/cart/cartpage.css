@@ -10,6 +10,7 @@
     justify-content: space-between;
 }
 .cart--item--description {
+    width: 50%;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -20,6 +21,7 @@
     height: 280px;
 }
 .cart--item--gallery{
+    position: relative;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -53,4 +55,25 @@
 .payments--heading {
     font-size: 24px;
     font-weight: 400;
+}
+.arrows--container {
+    position: absolute;
+    top: 85%;
+    right: 0%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60px;
+}
+.arrow--container {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.73);
+    cursor: pointer;
+}
+.arrow-rotated {
+    transform: rotate(180deg);
 }

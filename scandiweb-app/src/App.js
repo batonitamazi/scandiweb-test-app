@@ -4,7 +4,7 @@ import client from './models';
 import GET_CATEGORIES from './models/queries/categories.query';
 import { GET_CURRENCIES } from './models/queries/currencies.query';
 import Navbar from './components/navbar/Navbar';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import MainPage from './pages/mainpage/MainPage';
 import ProductPage from './pages/productpage/ProductPage';
 import CartPage from './pages/cart/CartPage';
@@ -52,7 +52,7 @@ class App extends Component {
         <Router>
           <Navbar categories={this.state.categories} active={this.state.active} activeChange={this.handleActiveChange} handleBackground={this.handleBackground} />
           <Switch>
-            <Route path='/' exact component={MainPage} />
+            <Route path='/' exact render={() => <Redirect to="/all" />} />
             <Route path='/cart' exact component={CartPage} />
             {this.state.categories?.map((item, index) => {
               return (

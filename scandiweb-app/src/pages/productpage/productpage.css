@@ -61,6 +61,7 @@
     font-weight: 300;
 }
 .choice--container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -72,15 +73,18 @@
     font-weight: 700;
 }
 .choices--container {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    max-width: 75%;
     gap: 5%;
 }
 .choice--btn {
+    min-width: 10%;
+    max-width: 50%;
+    height: 2em;
     background: none;
-    width: 83px;
-    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,8 +99,9 @@
     color: white;
 }
 .choice--btn-active {
-    width: 83px;
-    height: 45px;
+    min-width: 10%;
+    max-width: 50%;
+    height: 2em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,9 +130,10 @@
     cursor: pointer;
 }
 .color--btn {
+    min-width: 20%;
+    max-width: 50%;
+    height: 1.5em;
     background: none;
-    width: 83px;
-    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,9 +143,10 @@
     border: none;
 }
 .color--btn-active {
+    min-width: 20%;
+    max-width: 50%;
+    height: 1.5em;
     background: none;
-    width: 83px;
-    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;

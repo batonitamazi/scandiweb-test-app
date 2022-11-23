@@ -24,7 +24,7 @@ class MainPage extends Component {
                 category: `${this.props.location.pathname.slice(1, 10)}`,
             },
         });
-
+        console.log(result.data.category.products)
         this.setState({ products: result.data.category.products });
     }
     handleActiveChange = (e) => {
