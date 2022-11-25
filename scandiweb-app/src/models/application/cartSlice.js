@@ -13,20 +13,20 @@ const cartSlice = createSlice({
         addtoCart: (state, action) => {
             const alreadyInCart = state.cartItems.find((item) => item.unicalId === action.payload.unicalId)
             if (alreadyInCart) {
-                    alreadyInCart.quantity++;   
+                    alreadyInCart.quantity++;
             }
             else if(action.payload){
                 state.cartItems.push({ ...action.payload, quantity: 1 })
             }
         },
         incrementQuantity: (state, action) => {
-            const item = state.cartItems.find((item) => item.id === action.payload.id)
+            const item = state.cartItems.find((item) => item.unicalId === action.payload.unicalId)
             item.quantity++;
         },
         decrementQuantity: (state, action) => {
-            const item = state.cartItems.find((item) => item.id === action.payload.id)
+            const item = state.cartItems.find((item) => item.unicalId === action.payload.unicalId)
             if (item.quantity <= 1) {
-                const cartItems = state.cartItems.filter((element) => element.id !== item.id)
+                const cartItems = state.cartItems.filter((element) => element.unicalId !== item.unicalId)
                 state.cartItems = cartItems;
             }
             item.quantity--;

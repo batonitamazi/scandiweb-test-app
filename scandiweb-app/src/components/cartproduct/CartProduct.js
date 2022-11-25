@@ -2,26 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { incrementQuantity, decrementQuantity } from '../../models/application/cartSlice'
 import { Attributes } from '../attributes/Attributes'
+import ImageSlider from '../imageSlider/imageSlider'
 class CartProduct extends Component {
-    constructor() {
-        super();
-        this.state = { activeImage: 0 };
-    }
-    imageChange = (number) => {
-        this.setState({
-            activeImage: this.state.activeImage + number
-        })
+
+    imageScroller = () => {
+        
     }
     render() {
-
         const {
             items,
             currencies,
             incrementQuantity,
             decrementQuantity,
         } = this.props
-
-
         return (
             <>
                 {
@@ -43,16 +36,7 @@ class CartProduct extends Component {
                                         <span className='cart--item--quantity'>{item.quantity}</span>
                                         <button className='quantity--btn' onClick={() => decrementQuantity(item)}>-</button>
                                     </div>
-                                    <img className='cart--item--image' src={item.gallery[Number(this.state.activeImage)]} alt="product in cart" />
-                                    <div className='arrows--container'>
-                                        <div className='arrow--container'>
-                                            <img src='./assets/arrow.png' alt='arrow ' onClick={() => this.imageChange(1)} />
-                                        </div>
-                                        <div className='arrow--container'>
-                                            <img src='./assets/arrow.png' alt='arrow ' className='arrow-rotated' onClick={() => this.imageChange(1)} />
-                                        </div>
-                                    </div>
-
+                                    <ImageSlider item={item.gallery}/>
                                 </div>
                             </div>
                         )
