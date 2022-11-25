@@ -18,7 +18,7 @@ class CartPage extends Component {
         <h1 className='cart--heading'>
           Cart:
         </h1>
-        <CartProduct />
+          <CartProduct />
         <div className='cartpage--payments'>
           <h1 className='payments--heading'>Tax 21%:
             {priceCalculator(items, currencies) * 21 / 100}

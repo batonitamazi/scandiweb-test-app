@@ -1,8 +1,11 @@
+
+
 .cart--heading {
     font-size: 32px;
     font-weight: 700;
 }
 .cart--item {
+    padding-top: 49px;
     width: 100%;
     height: 20%;
     display: flex;
@@ -18,17 +21,14 @@
 .cart--item--image {
     object-fit: contain;
     width: 200px;
-    height: 280px;
 }
 .cart--item--gallery{
     position: relative;
-    height: 100%;
     display: flex;
     flex-direction: row;
     gap: 10%;   
 }
 .cart--quantity--actions {
-    height: 280px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -53,6 +53,7 @@
     
 }
 .payments--heading {
+    padding-top: 5px;
     font-size: 24px;
     font-weight: 400;
 }
@@ -78,6 +79,7 @@
     transform: rotate(180deg);
 }
 .choice--container--cart {
+    padding-top: 20px;
     height: 60%;
     width: 30%;
 }
@@ -88,4 +90,8 @@
     flex-direction: row;
     justify-content: flex-start;
     gap: 5%;
+}
+.cartpage--payments {
+    padding-top: 57px;
+    padding-bottom: 250px;
 }

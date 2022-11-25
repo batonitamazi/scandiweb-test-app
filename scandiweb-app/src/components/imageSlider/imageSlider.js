@@ -28,11 +28,10 @@ class ImageSlider extends Component {
     }
     render() {
         const { item } = this.props
-
         return (
             <>
                 <img className="cart--item--image" src={item[this.state.currentPicture]} alt="mini product" />
-                {item.length > 0 ? (
+                {item.length > 1 ? (
                     <div className='arrows--container'>
                         <div className='arrow--container' onClick={() => this.previousPicture()}>
                             <img src='./assets/arrow.png' alt='arrow ' />

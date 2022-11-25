@@ -9,7 +9,7 @@ export class Attributes extends Component {
     return attributes && attributes.map((attribute, index) => {
       return (
         <div className={isCart ? 'choice--container--cart' : 'choice--container'} key={index}>
-          <h4 className='container--subtitle'>{attribute.name}:</h4>
+          <h4 className={isSmall ? 'container--subtitle-small': 'container--subtitle'}>{attribute.name}:</h4>
           <div className={isCart ? 'choices--container--cart' : 'choices--container'}>
             {activeAttributes && attribute.items.map(({ value, id }) => {
               switch (attribute.id) {

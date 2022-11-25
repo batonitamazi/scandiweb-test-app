@@ -60,6 +60,7 @@
     font-weight: 300;
 }
 .choice--container {
+    padding-top: 10px;
     width: 100%;
     height: 20%;
     display: flex;
@@ -179,8 +180,8 @@
     border: 1px solid #1D1F22;
 }
 .choice--btn-small-active {
-    width: 28px;
-    height: 28px;
+    width: 25px;
+    height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,6 +191,7 @@
     cursor: pointer;
     background-color: black;
     color: white;
+
 }
 @media(width<800px){
     .product--container {

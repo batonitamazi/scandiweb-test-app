@@ -18,8 +18,6 @@ class App extends Component {
     super();
     this.state = { categories: [], currencies: [], active: 0 };
   }
-
-
   componentDidMount() {
     this.fetchCategories();
     this.fetchCurrencies();
@@ -45,11 +43,12 @@ class App extends Component {
   handleActiveChange = (e) => {
     this.setState({ active: Number(e.target.id) })
   }
+
   render() {
     const {backgroundBlur} = this.props
     const {categories, active} = this.state
     return (
-      <div className={backgroundBlur ? 'App--blurred' : 'App'}>
+      <div className='App'>
         <Router>
           <Navbar categories={categories} active={active} activeChange={this.handleActiveChange} handleBackground={this.handleBackground} />
           <Switch>
