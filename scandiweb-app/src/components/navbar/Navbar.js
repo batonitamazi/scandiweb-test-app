@@ -55,7 +55,7 @@ class Navbar extends Component {
           })}
         </ul>
         <Link to="/">
-          <img src='./assets/logo.png' alt='logo' className='navbar--logo' />
+          <img src='./assets/logo.svg' alt='logo' className='navbar--logo' />
         </Link>
         <div className='nav--actions'>
           <div className='currencie-picker' onClick={this.handleModal}>
@@ -63,10 +63,10 @@ class Navbar extends Component {
               <span className='currency--tag'>{activeCurrency[1].symbol}</span>
             )}
             <CurrenciesCard show={this.state.show} />
-            <img className='dropdown--icon' alt='dropdown' src='./assets/dropdown.png' />
+            <img className='dropdown--icon' alt='dropdown' src='./assets/dropdown.svg' />
           </div>
           <div onClick={this.handleCartModal} >
-            <img src='./assets/Emptycart.png' className='empty--cart' alt='empty cart' />
+            <img src='./assets/emptycart.svg' className='empty--cart' alt='empty cart' />
             {
               this.props.items.cartItems.length > 0 && (
                 <div className='quantity--container'>

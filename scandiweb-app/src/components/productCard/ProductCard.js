@@ -41,7 +41,7 @@ class ProductCard extends Component {
                     </div>
 
                 </Link>
-                <img src='./assets/addtocart.png' className={inStock ? 'addto--cart' : 'hidden--cart'} alt='cart' onClick={() => addtoCart(createProductWithSelectedAttribtues(item))} />
+                <img src='./assets/addtocart.svg' className={inStock ? 'addto--cart' : 'hidden--cart'} alt='cart' onClick={() => addtoCart(createProductWithSelectedAttribtues(item))} />
             </div>
         )
     }

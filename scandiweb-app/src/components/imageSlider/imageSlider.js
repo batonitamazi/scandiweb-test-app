@@ -34,10 +34,10 @@ class ImageSlider extends Component {
                 {item.length > 1 ? (
                     <div className='arrows--container'>
                         <div className='arrow--container' onClick={() => this.previousPicture()}>
-                            <img src='./assets/arrow.png' alt='arrow ' />
+                            <img src='./assets/arrow.svg' alt='arrow ' />
                         </div>
                         <div className='arrow--container' onClick={() => this.nextPicture()}>
-                            <img src='./assets/arrow.png' alt='arrow ' className='arrow-rotated'  />
+                            <img src='./assets/arrow.svg' alt='arrow ' className='arrow-rotated'  />
                         </div>
                     </div>
                 ) : null}
