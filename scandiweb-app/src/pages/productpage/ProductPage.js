@@ -45,7 +45,6 @@ class ProductPage extends Component {
       product: {
         attributes,
       },
-      backgroundBlur,
       activeAttributes
     } = this.state;
     return (
