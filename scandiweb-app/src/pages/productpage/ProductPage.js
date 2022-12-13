@@ -50,7 +50,7 @@ class ProductPage extends Component {
     } = this.state;
     return (
       <div className='product--container'>
-        <div className={backgroundBlur ? 'images--container--blur' : 'images--container'}>
+        <div className='images--container'>
           {this.state.product?.gallery?.map((item, index) => {
             return (
               <img key={index} src={item} className="mini--image" alt='product' onClick={() => this.setState({ image: `${item}` })} />
@@ -64,23 +64,25 @@ class ProductPage extends Component {
               <h1 className='product--title'>{this.state.product?.brand}</h1>
               <h1 className='product--subtitle'>{this.state.product?.name}</h1>
             </div>
-            <Attributes attributes={attributes} onAttributeSelect={this.onAttributeSelect} activeAttributes={activeAttributes} />
-            <div className='choice--container'>
-              <h4 className='container--subtitle'>Price:</h4>
-              <h1 className='product--price'>
-                <ProductPrice prices={this.state.product.prices} />
-              </h1>
+            <div className='choice--container--wrapper'>
+              <Attributes attributes={attributes} onAttributeSelect={this.onAttributeSelect} activeAttributes={activeAttributes} />
+              <div className='choice--container'>
+                <h4 className='container--subtitle'>Price:</h4>
+                <h1 className='product--price'>
+                  <ProductPrice prices={this.state.product.prices} />
+                </h1>
+              </div>
             </div>
             <button
               className='cart--add'
-              onClick={() => {this.props.addtoCart(createProductWithSelectedAttribtues(product, activeAttributes)) }}
+              onClick={() => { this.props.addtoCart(createProductWithSelectedAttribtues(product, activeAttributes)) }}
             >
               Add to cart
             </button>
 
             <div dangerouslySetInnerHTML={{
               __html: this.state.product?.description
-            }}>
+            }} className="inner--html">
             </div>
           </div>
         </div>

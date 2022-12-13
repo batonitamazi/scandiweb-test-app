@@ -18,30 +18,31 @@ class CartPage extends Component {
         <h1 className='cart--heading'>
           Cart:
         </h1>
+        <div className='cart--items'>
           <CartProduct />
-        <div className='cartpage--payments'>
-          <h1 className='payments--heading'>Tax 21%:
-            {priceCalculator(items, currencies) * 21 / 100}
-            {currencyLabel(items, currencies)}
-            <span className='product--price'>
-            </span>
-          </h1>
-          <h1 className='payments--heading'>Quantity:
-            {productCounter(items)}
-            <span className='product--price'>
-            </span>
-          </h1>
-          <h1 className='payments--heading'>Total:
-            <span className='product--price'>
-              {priceCalculator(items, currencies)}
+          <div className='cartpage--payments'>
+            <h1 className='payments--heading'>Tax 21%:
+              {priceCalculator(items, currencies) * 21 / 100}
               {currencyLabel(items, currencies)}
-            </span>
-          </h1>
-          <button className='checkout--btn'>
-            order
-          </button>
+              <span className='product--price'>
+              </span>
+            </h1>
+            <h1 className='payments--heading'>Quantity:
+              {productCounter(items)}
+              <span className='product--price'>
+              </span>
+            </h1>
+            <h1 className='payments--heading'>Total:
+              <span className='product--price'>
+                {priceCalculator(items, currencies)}
+                {currencyLabel(items, currencies)}
+              </span>
+            </h1>
+            <button className='checkout--btn'>
+              order
+            </button>
+          </div>
         </div>
-
       </div>
     )
   }

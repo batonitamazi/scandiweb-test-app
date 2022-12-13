@@ -1,8 +1,9 @@
-
-
 .cart--heading {
     font-size: 32px;
     font-weight: 700;
+}
+.cart--items {
+    width: 90%;
 }
 .cart--item {
     padding-top: 49px;
