@@ -29,21 +29,21 @@ class ProductPage extends Component {
           productId: this.props.match.params.id,
         },
       });
-      this.setState({ product: { ...result.data.product, }});
-      this.setState({image: result.data.product.gallery[0]})
+      this.setState({ product: { ...result.data.product, } });
+      this.setState({ image: result.data.product.gallery[0] })
     } catch (error) {
       console.log(error)
     }
   }
-  onAttributeSelect = (attributeId, attributeValue) => {   
-    this.setState({ activeAttributes: { ...this.state.activeAttributes, [attributeId]: attributeValue }});
+  onAttributeSelect = (attributeId, attributeValue) => {
+    this.setState({ activeAttributes: { ...this.state.activeAttributes, [attributeId]: attributeValue } });
   }
-  
+
   render() {
     const {
       product,
       product: {
-        attributes
+        attributes,
       },
       backgroundBlur,
       activeAttributes
@@ -57,7 +57,7 @@ class ProductPage extends Component {
             )
           })}
         </div>
-        <div className={backgroundBlur ? 'description--container--blur' : 'description--container'} >
+        <div className='description--container'>
           <img className='main--image' src={this.state.image} alt="product" />
           <div className='product--info--card'>
             <div>
@@ -71,7 +71,10 @@ class ProductPage extends Component {
                 <ProductPrice prices={this.state.product.prices} />
               </h1>
             </div>
-            <button className='cart--add' onClick={() => {this.props.addtoCart(createProductWithSelectedAttribtues(product, activeAttributes))}}>
+            <button
+              className='cart--add'
+              onClick={() => {this.props.addtoCart(createProductWithSelectedAttribtues(product, activeAttributes)) }}
+            >
               Add to cart
             </button>
 

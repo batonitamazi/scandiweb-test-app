@@ -13,7 +13,6 @@ class ProductCard extends Component {
     }
     render() {
         const {
-            backgroundBlur,
             item,
             item: {
                 name,
@@ -26,22 +25,23 @@ class ProductCard extends Component {
             addtoCart,
         } = this.props;
         return (
-            <div className={backgroundBlur ? 'product--card--blurred' : 'product--card'} >
-                <div className={inStock ? 'in--stock' : 'out--stock'}>
-                    Out of Stock
-                </div>
-                <img src={gallery[0]} alt="product" className="product--image" />
-                <img src='./assets/addtocart.png' className={inStock ? 'addto--cart' : 'hidden--cart'} alt='cart' onClick={() => addtoCart(createProductWithSelectedAttribtues(item))} />
-                <div className='card--subcontainer'>
-                    <Link to={`/${id}`} className="text--link">
+            <div className='product--card--wrapper'>
+                <Link to={`/${id}`} className='product--card text--link'>
+                    <div className={inStock ? 'in--stock' : 'out--stock'}>
+                        Out of Stock
+                    </div>
+                    <img src={gallery[0]} alt="product" className="product--image" />
+                    <div className='card--subcontainer'>
                         <span className='item--span'>{name}</span>
                         {currencies[1] && (
                             <h4 className='item--price'>
                                 <ProductPrice prices={prices} />
                             </h4>
                         )}
-                    </Link>
-                </div>
+                    </div>
+
+                </Link>
+                <img src='./assets/addtocart.png' className={inStock ? 'addto--cart' : 'hidden--cart'} alt='cart' onClick={() => addtoCart(createProductWithSelectedAttribtues(item))} />
             </div>
         )
     }

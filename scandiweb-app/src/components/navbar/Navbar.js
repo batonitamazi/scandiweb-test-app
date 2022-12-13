@@ -65,16 +65,16 @@ class Navbar extends Component {
             <CurrenciesCard show={this.state.show} />
             <img className='dropdown--icon' alt='dropdown' src='./assets/dropdown.png' />
           </div>
-          <img src='./assets/Emptycart.png' className='empty--cart' alt='empty cart' onClick={this.handleCartModal} />
-          {
-            this.props.items.cartItems.length > 0 && (
-              <div className='quantity--container'>
-                <span>
-                  {productCounter(cartItems)}
-                </span>
-              </div>
-            )
-          }
+          <div onClick={this.handleCartModal} >
+            <img src='./assets/Emptycart.png' className='empty--cart' alt='empty cart' />
+            {
+              this.props.items.cartItems.length > 0 && (
+                <div className='quantity--container'>
+                    {productCounter(cartItems)}
+                </div>
+              )
+            }
+          </div>
           <CartModal show={this.state.showCartModal} handleCartModal={this.handleCartModal} />
         </div>
       </div>

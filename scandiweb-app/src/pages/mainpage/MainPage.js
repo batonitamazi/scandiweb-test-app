@@ -38,9 +38,9 @@ class MainPage extends Component {
         
         return (
             <div className='items--container'>
-                <h1 className='category--heading'>{this.props.location.pathname.slice(1, 10)}</h1>
+                <h1 className='category--heading'>{this.props.location.pathname.slice(1, 10).toUpperCase()}</h1>
                 <div className='category--items'>
-                    {products?.map((item, index) => {
+                    {products?.map((item) => {
                         return (
                             <ProductCard backgroundBlur={backgroundBlur} item={item} key={item.id}/>
                         )

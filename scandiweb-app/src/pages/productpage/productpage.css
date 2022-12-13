@@ -1,11 +1,11 @@
 .product--container { 
-    width: 90%;
+    width: 80%;
     padding-top: 72px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     gap: 10%;
-    height: 80vh;
+    max-height: 100vh;
 
 }
 .images--container {
@@ -43,13 +43,17 @@
     z-index: -4;
 }
 .main--image {
+    width: 610px;
+    object-fit: contain;
+    height: 511px;
     z-index: -4;
 }
 .product--info--card {
     width: 35%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 8%;
 }
 .product--title  {
     font-size: 30px;
@@ -60,14 +64,13 @@
     font-weight: 300;
 }
 .choice--container {
-    padding-top: 10px;
     width: 100%;
     height: 20%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 10%;
+    gap: 2%;
 }
 .container--subtitle {
     font-size: 18px;
@@ -117,8 +120,8 @@
     font-weight: 700;
 }
 .cart--add {
-    height: 7.8%;
-    width: 70%;
+    height: 52px;
+    width: 292px;
     background-color: #5ECE7B;
     color: #FFFFFF;
     text-transform: uppercase;
@@ -150,14 +153,19 @@
     font-size: 16px;
     font-family: 'Raleway';
     cursor: pointer;
-    border: 4px solid rgba(94, 206, 123, 1);
+    border: none;
+    outline: 1px solid rgba(94, 206, 123, 1);
+    outline-offset: .2em;
+
 }
 .color--btn-small-active {
     width: 16px;
     height: 16px;
     background: none;
     cursor: pointer;
-    border: 3px solid rgba(94, 206, 123, 1);
+    border: none;
+    outline: 1px solid rgba(94, 206, 123, 1);
+    outline-offset: .2em;
 }
 .color--btn-small{
     width: 16px;
@@ -165,6 +173,7 @@
     background: none;
     cursor: pointer;
     border: none;
+
 }
 .choice--btn-small {
     width: 24px;

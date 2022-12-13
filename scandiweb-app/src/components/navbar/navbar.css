@@ -1,15 +1,14 @@
 .nav{
+    padding-left: 10%;
+    padding-right: 10%;
     width: 100%;
-    padding-left: 5%;
-    padding-right: 5%;
     height: 80px;
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 1);
     flex-direction: row;
     justify-content: space-between;
+    background-color: rgba(255, 255, 255, 1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    border-opacity: 0.1;
     z-index: 30;
 }
 .nav--heading {
@@ -23,7 +22,7 @@
 }
 .nav--list {
     height: 100%;
-    width: 218px;
+    width: 225px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,7 +31,6 @@
     text-transform: uppercase;
     font-size: 16px;
     font-weight: 400;
-    padding-right: 32px;
     color: #1D1F22;
 }
 .nav--actions {
@@ -78,7 +76,7 @@
 .quantity--container{
     position: absolute;
     top: 2.7%;
-    right: 4.55%;
+    right: 9.5%;
     border-radius: 100%;
     background-color: #2B2B2B;
     width: 17px;
@@ -88,8 +86,5 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-}
-.quantity--container > span{
-    font-size: 14px;
-    font-weight: 700;
+    cursor: pointer;
 }

@@ -45,7 +45,6 @@ class App extends Component {
   }
 
   render() {
-    const {backgroundBlur} = this.props
     const {categories, active} = this.state
     return (
       <div className='App'>

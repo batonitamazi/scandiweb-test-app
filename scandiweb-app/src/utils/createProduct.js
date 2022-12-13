@@ -1,9 +1,11 @@
 
 function createProductWithSelectedAttribtues(product, activeAttributes) {
-
     const newProduct = structuredClone(product);
-    if (!activeAttributes) {
-        if (newProduct.attributes.length>0) {
+    if (newProduct.inStock === false) {
+        alert("Product is Out of Stock")
+    }
+    else if (!activeAttributes) {
+        if (newProduct.attributes.length > 0) {
             newProduct.attributes.map((attr) => (
                 newProduct.activeAttributes = { ...newProduct.activeAttributes, [attr.id]: attr.items[0].value }
             ));
@@ -24,6 +26,7 @@ function createProductWithSelectedAttribtues(product, activeAttributes) {
             return newProduct
         }
     }
+
 
 }
 export default createProductWithSelectedAttribtues
